@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts/Hogwarts.csproj",
+      "projectUniqueName": "/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/Hogwarts.csproj",
       "projectName": "Hogwarts",
-      "projectPath": "/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts/Hogwarts.csproj",
+      "projectPath": "/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/Hogwarts.csproj",
       "packagesPath": "/Users/amin/.nuget/packages/",
-      "outputPath": "/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts/obj/",
+      "outputPath": "/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/amin/.nuget/NuGet/NuGet.Config"

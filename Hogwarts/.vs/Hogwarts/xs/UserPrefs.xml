@@ -1,0 +1,23 @@
+﻿<Properties StartupConfiguration="{B328F39A-DD6A-4676-A36A-FFDE6E3A2735}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="../Hogwarts School/Program.cs">
+    <Files>
+      <File FileName="Program.cs" Line="18" Column="2" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Hogwarts" expanded="True">
+            <Node name="Hogwarts" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Hogwarts PreferredExecutionTarget="MonoDevelop.Default" FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

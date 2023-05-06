@@ -1,0 +1,15 @@
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/bin/Debug/net7.0/Hogwarts
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/bin/Debug/net7.0/Hogwarts.deps.json
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/bin/Debug/net7.0/Hogwarts.runtimeconfig.json
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/bin/Debug/net7.0/Hogwarts.dll
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/bin/Debug/net7.0/Hogwarts.pdb
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/Debug/net7.0/Hogwarts.csproj.AssemblyReference.cache
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/Debug/net7.0/Hogwarts.GeneratedMSBuildEditorConfig.editorconfig
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/Debug/net7.0/Hogwarts.AssemblyInfoInputs.cache
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/Debug/net7.0/Hogwarts.AssemblyInfo.cs
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/Debug/net7.0/Hogwarts.csproj.CoreCompileInputs.cache
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/Debug/net7.0/Hogwarts.dll
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/Debug/net7.0/refint/Hogwarts.dll
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/Debug/net7.0/Hogwarts.pdb
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/Debug/net7.0/Hogwarts.genruntimeconfig.cache
+/Users/amin/Documents/University/Term 2/C# Programming/Exercise 3 - MiniProject2/Hogwarts/Hogwarts School/obj/Debug/net7.0/ref/Hogwarts.dll
