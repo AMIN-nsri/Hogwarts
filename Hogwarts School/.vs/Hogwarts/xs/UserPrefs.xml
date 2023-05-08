@@ -1,25 +1,35 @@
 ﻿<Properties StartupConfiguration="{B328F39A-DD6A-4676-A36A-FFDE6E3A2735}|Default">
-  <MonoDevelop.Ide.ItemProperties.Hogwarts PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Hogwarts PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Human.cs">
     <Files>
-      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="40" Column="40" />
+      <File FileName="Human.cs" Line="21" Column="83" />
+      <File FileName="Group.cs" />
+      <File FileName="Student.cs" />
+      <File FileName="Teacher.cs" />
+      <File FileName="Dumbledore.cs" />
+      <File FileName="Course.cs" />
+      <File FileName="Dorm.cs" />
+      <File FileName="Plant.cs" />
+      <File FileName="EBlood.cs" />
+      <File FileName="../../../Exercise 2 - MiniProject1/MiniProject-1---Hospital-System/Hospital System/Program.cs" Line="668" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Hogwarts" expanded="True">
             <Node name="Hogwarts" expanded="True">
-              <Node name="Program.cs" selected="True" />
+              <Node name="Human.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
