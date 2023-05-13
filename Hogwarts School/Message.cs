@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Hogwarts
 {
-	public class Message
+	public class Message:Dumbledore
 	{
 		public Message()
 		{
@@ -87,11 +87,18 @@ namespace Hogwarts
         // Dumbledore Menu
         public static void DumbledoreMenu()
         {
+            
             Console.WriteLine("Choose one (type key letter):");
             Console.WriteLine("Send Invitation(S)");
             Console.WriteLine("Inbox(I)");
             //Console.WriteLine("Student(S)");
             Console.WriteLine("Exit(E)");
+        }
+        public static void NewMessage()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("You have new Message!");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }

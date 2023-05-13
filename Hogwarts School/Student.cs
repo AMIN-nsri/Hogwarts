@@ -11,6 +11,10 @@ namespace Hogwarts
 		public int Term { get; set; }
 		public int DormNumber { get; set; } //Khabgah
 
+		public void IfInvited(Human human)
+		{
+
+		}
     }
 }
 

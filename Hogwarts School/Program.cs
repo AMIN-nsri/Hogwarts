@@ -98,7 +98,56 @@ namespace Hogwarts
                                 Message.Loading(2);
                                 Message.Program();
                                 Message.Welcome("Dumbledore");
+                                if (dumbledore.NewDumbMessage)
+                                {
+                                    Message.NewMessage();
+                                }
                                 Message.DumbledoreMenu();
+                                string input2 = Console.ReadLine();
+                                switch (input2)
+                                {
+                                    case "S":
+
+                                        break;
+                                    case "I":
+                                        Message.Program();
+                                        bool inbox = true;
+                                        while(inbox)
+                                        {
+                                            dumbledore.Inbox();
+                                            string input3 = Console.ReadLine();
+                                            switch (input3)
+                                            {
+                                                case "b":
+                                                    inbox = false;
+                                                    break;
+                                                case "F":
+                                                    dumbledore.FullInbox();
+                                                    string input4 = Console.ReadLine();
+                                                    switch (input4)
+                                                    {
+                                                        case "b":
+                                                            inbox = false;
+                                                            break;
+                                                        default:
+                                                            Message.Default(3);
+                                                            break;
+                                                    }
+                                                    break;
+                                                default:
+                                                    Message.Default(3);
+                                                    break;
+                                            }
+
+                                        }
+                                        break;
+                                    case "E":
+                                        System.Environment.Exit(0);
+                                        break;
+                                    default:
+                                        Message.Default(3);
+                                        break;
+                                }
                             }
                         }
                             break;
@@ -122,16 +171,21 @@ namespace Hogwarts
                         
                         break;
                     case "S":
-                        if (FirstLogin)
-                        { 
-                            Message.FirstLogin();
-                            Message.Loading(1);
-                            FirstLogin = false;
-                            break;
-                        }
-                        else
+                        Message.Program();
+                        bool StudentMenu = true;
+                        while (StudentMenu)
                         {
+                            if (FirstLogin)
+                            {
+                                Message.FirstLogin();
+                                Thread.Sleep(2000);
+                                Message.Loading(1);
+                                break;
+                            }
+                            else
+                            {
 
+                            }
                         }
                         break;
                     default:
