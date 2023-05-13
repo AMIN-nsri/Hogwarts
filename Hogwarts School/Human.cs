@@ -14,7 +14,7 @@ namespace Hogwarts
         public string Username { get; set; }
 		public string Password { get; set; }
 		public EBlood Blood { get; set; }
-        public string Role { get; set; }
+        public ERole Role { get; set; }
 
 		public void Display()
 		{

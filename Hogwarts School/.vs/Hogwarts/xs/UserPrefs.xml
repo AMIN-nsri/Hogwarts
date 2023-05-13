@@ -4,9 +4,9 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.Hogwarts PreferredExecutionTarget="MonoDevelop.Default" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Human.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="40" Column="40" />
+      <File FileName="Program.cs" Line="34" Column="17" />
       <File FileName="Human.cs" Line="21" Column="83" />
       <File FileName="Group.cs" />
       <File FileName="Student.cs" />
@@ -16,15 +16,13 @@
       <File FileName="Dorm.cs" />
       <File FileName="Plant.cs" />
       <File FileName="EBlood.cs" />
-      <File FileName="../../../Exercise 2 - MiniProject1/MiniProject-1---Hospital-System/Hospital System/Program.cs" Line="668" Column="17" />
+      <File FileName="../../../Exercise 2 - MiniProject1/MiniProject-1---Hospital-System/Hospital System/Program.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Hogwarts" expanded="True">
-            <Node name="Hogwarts" expanded="True">
-              <Node name="Human.cs" selected="True" />
-            </Node>
+            <Node name="Hogwarts" expanded="True" />
           </Node>
         </State>
       </Pad>
