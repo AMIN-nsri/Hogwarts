@@ -1,14 +1,23 @@
 ﻿using System;
 namespace Hogwarts
 {
+    public class DMessage
+    {
+        public DMessage(string message)
+        {
+            this.message = message;
+        }
+        public string message { get; set; }
+        public bool Seen { get; set; }
+    }
 	public class Dumbledore
 	{
 		public Dumbledore()
 		{
-            DumbMessage.Add("Hello");
-            DumbMessage.Add("Hello2");
-            DumbMessage.Add("Hello3");
-            DumbMessage.Add("Hello4");
+            DumbMessage.Insert(0,new DMessage("hello"));
+            DumbMessage.Insert(0, new DMessage("hello2"));
+            DumbMessage.Insert(0, new DMessage("hello3"));
+            DumbMessage.Insert(0, new DMessage("hello4"));
 
         }
         public Dorm Dorm { get; set; } // Make it function
@@ -22,49 +31,82 @@ namespace Hogwarts
             
             return false;
         }
-        List<string> DumbMessage = new List<string>();
+        public int STLoginCheck(string username, string password, List<Student> studentlist)
+        {
+            for (int i = 0; i < studentlist.Count; i++)
+            {
+                if (username == studentlist[i].Username && password == studentlist[i].Password) return i;
+            }
+            return -1;
+        }
+        public bool TELoginCheck(string username, string password, List<Teacher> teacherlist)
+        {
+            for (int i = 0; i < teacherlist.Count; i++)
+            {
+                if (username == teacherlist[i].Username && password == teacherlist[i].Password) return true;
+            }
+            return false;
+        }
+        List<DMessage> DumbMessage = new List<DMessage>();
         
         public bool NewDumbMessage;
-        public void Inbox()
+        public void Inbox_UnRead()
         {
-            if (DumbMessage.Count >= 3)
-            {
-                Console.WriteLine("Your Last 3 Message:");
-                for (int i = DumbMessage.Count - 1; i > DumbMessage.Count - 4; i--)
+            //if (DumbMessage.Count != 0)
+            //{
+                bool isThereAnyunreadMessage = false;
+                for (int i = 0; i < DumbMessage.Count; i++)
                 {
-                    Console.WriteLine((i+1) + "- " + DumbMessage[i]);
+                    if (!DumbMessage[i].Seen)
+                    {
+                        isThereAnyunreadMessage = true;
+                        Console.WriteLine((i + 1) + "- " + DumbMessage[i].message);
+                        DumbMessage[i].Seen = true;
+
+                    }
                 }
-                Console.WriteLine("Enter 'F' to See Full Inbox.");
-            }
-            if (DumbMessage.Count == 2)
-            {
-                Console.WriteLine("Your Only 2 Message:");
-                for (int i = DumbMessage.Count - 1; i > DumbMessage.Count - 3; i--)
+            if (!isThereAnyunreadMessage) Console.WriteLine("Empty!");
+            //}
+            //else Console.WriteLine("Empty!");
+        }
+        public void Inbox_Read()
+        {
+            //if (DumbMessage.Count != 0)
+            //{
+            bool isThereAnyreadMessage = false;
+                for (int i = 0; i < DumbMessage.Count; i++)
                 {
-                    Console.WriteLine((i+1) + "- " + DumbMessage[i]);
+                    if (DumbMessage[i].Seen)
+                    {
+                    isThereAnyreadMessage = true;
+                    Console.WriteLine((i + 1) + "- " + DumbMessage[i].message);
+                    }
                 }
-            }
-            if (DumbMessage.Count == 1)
+            if (!isThereAnyreadMessage) Console.WriteLine("Empty!");
+
+            //}
+            //else Console.WriteLine("Empty!");
+        }
+        public void Inbox_All()
+        {
+            for (int i = 0; i < DumbMessage.Count; i++)
             {
-                Console.WriteLine("Your Only Message:");
-                
-                    Console.WriteLine(DumbMessage[0]);
-                
-            }
-            if (DumbMessage.Count == 0)
-            {
-                Console.WriteLine("Your Inbox is Empty!");
+                Console.WriteLine((i + 1) + "- " + DumbMessage[i].message);
             }
         }
-        public void FullInbox()
+        public void Invite(Human human)
         {
-            Message.Program();
-            Inbox();
-            Wait.ClearLine();
-            //Wait.ClearLine();
-            for (int i = DumbMessage.Count - 4; i >= 0; i--)
+            if(human.Role== ERole.Teacher)
             {
-                Console.WriteLine((i + 1) + "- " + DumbMessage[i]);
+                Console.WriteLine("You Cannot Invite Teachers!");
+            }
+            else if (human.Role==ERole.Student)
+            {
+                human.invited = true;
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.WriteLine("Student Invited Successfully!");
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.WriteLine("They Will Be Registered Once They Accept the Invitation.");
             }
         }
     }

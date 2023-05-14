@@ -1,10 +1,10 @@
 ﻿using System;
 namespace Hogwarts
 {
-	public class Teacher
+	public class Teacher:Human
 	{
-		public Teacher()
-		{
+		public Teacher(Human human) : base(human)
+        {
 		}
 
 		public bool SimultaneousTeaching { get; set; }

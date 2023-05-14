@@ -3,23 +3,23 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Dumbledore.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Student.cs">
     <Files>
-      <File FileName="Program.cs" Line="113" Column="47" />
-      <File FileName="Message.cs" Line="19" Column="10" />
+      <File FileName="Program.cs" Line="131" Column="67" />
+      <File FileName="Message.cs" Line="12" Column="33" />
       <File FileName="../../../Exercise 2 - MiniProject1/MiniProject-1---Hospital-System/Hospital System/Program.cs" Line="620" Column="30" />
       <File FileName="../../../Exercise 2 - MiniProject1/MiniProject-1---Hospital-System/Hospital System/Message.cs" Line="45" Column="10" />
-      <File FileName="../../../Exercise 2 - MiniProject1/MiniProject-1---Hospital-System/Hospital System/Admin.cs" Line="53" Column="4" />
-      <File FileName="Dumbledore.cs" Line="21" Column="24" />
+      <File FileName="Dumbledore.cs" Line="80" Column="62" />
       <File FileName="Teacher.cs" Line="1" Column="1" />
+      <File FileName="AllowedPerson.cs" Line="1" Column="1" />
+      <File FileName="Student.cs" Line="16" Column="1" />
+      <File FileName="Human.cs" Line="24" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Hogwarts" expanded="True">
-            <Node name="Hogwarts" expanded="True">
-              <Node name="Dumbledore.cs" selected="True" />
-            </Node>
+            <Node name="Hogwarts" expanded="True" />
           </Node>
         </State>
       </Pad>

@@ -100,6 +100,12 @@ namespace Hogwarts
             Console.WriteLine("You have new Message!");
             Console.ForegroundColor = ConsoleColor.White;
         }
+        public static void InboxMenu()
+        {
+            Console.WriteLine("Unread Messages(U)");
+            Console.WriteLine("Read Messages(R)");
+            Console.WriteLine("All Messages(A)");
+        }
     }
 }
 

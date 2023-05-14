@@ -3,8 +3,9 @@ namespace Hogwarts
 {
 	public class AllowedPerson : Human
 	{
-		public AllowedPerson()
+		public AllowedPerson(Human human): base()
 		{
+
 		}
 
 		public string Schedule { get; set; }

@@ -13,7 +13,9 @@ namespace Hogwarts
         public static void Main()
         {
             List<Human> HumanList = new List<Human>();
+            List<Student> StudentList = new List<Student>();
             List<Teacher> TeacherList = new List<Teacher>();
+
             using (StreamReader file = new StreamReader("file.tsv"))
             {
                 string In;
@@ -31,6 +33,10 @@ namespace Hogwarts
                     human1.Password = data[6];
                     human1.Blood = (EBlood) Enum.Parse(typeof(EBlood), data[7].Replace(" ",""), true);
                     human1.Role = (ERole) Enum.Parse(typeof(ERole), data[8] , true);
+
+                    if (ERole.Student == human1.Role) StudentList.Add(new Student(human1));
+                    if (ERole.Teacher == human1.Role) TeacherList.Add(new Teacher(human1));
+
                     HumanList.Add(human1);
                     //if (human1.Role == ERole.Teacher) TeacherList.Add(human1); 
                 }
@@ -109,22 +115,55 @@ namespace Hogwarts
                                     case "S":
 
                                         break;
+                                    case "b":
+                                        DumbledoreMenu = false;
+                                        break;
                                     case "I":
                                         Message.Program();
                                         bool inbox = true;
                                         while(inbox)
                                         {
-                                            dumbledore.Inbox();
+                                            Message.Program();
+                                            Message.InboxMenu();
                                             string input3 = Console.ReadLine();
                                             switch (input3)
                                             {
                                                 case "b":
                                                     inbox = false;
                                                     break;
-                                                case "F":
-                                                    dumbledore.FullInbox();
+                                                case "A":
+                                                    Message.Program();
+                                                    dumbledore.Inbox_All();
                                                     string input4 = Console.ReadLine();
                                                     switch (input4)
+                                                    {
+                                                        case "b":
+                                                            inbox = false;
+                                                            break;
+                                                        default:
+                                                            Message.Default(3);
+                                                            break;
+                                                    }
+                                                    break;
+                                                case "U":
+                                                    Message.Program();
+                                                    dumbledore.Inbox_UnRead();
+                                                    string input5 = Console.ReadLine();
+                                                    switch (input5)
+                                                    {
+                                                        case "b":
+                                                            inbox = false;
+                                                            break;
+                                                        default:
+                                                            Message.Default(3);
+                                                            break;
+                                                    }
+                                                    break;
+                                                case "R":
+                                                    Message.Program();
+                                                    dumbledore.Inbox_Read();
+                                                    input5 = Console.ReadLine();
+                                                    switch (input5)
                                                     {
                                                         case "b":
                                                             inbox = false;
@@ -184,7 +223,67 @@ namespace Hogwarts
                             }
                             else
                             {
+                                //Login check
+                                Message.Program();
+                                Console.WriteLine("Enter your Username and Password below");
+                                Console.Write("User Name: ");
+                                input = Console.ReadLine();
+                                string username2 = input;
+                                Console.Write("Password: ");
+                                input = GetPassword();
+                                string password2 = input;
+                                while (dumbledore.STLoginCheck(username2, password2, StudentList) < 0)
+                                {
+                                    Message.Program();
+                                    Message.Wrong();
+                                    Console.WriteLine("Enter your Username and Password below");
+                                    Console.Write("User Name: ");
+                                    input = Console.ReadLine();
+                                    if (input == "b")
+                                    {
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        break;
+                                    }
+                                    username = input;
+                                    Console.Write("Password: ");
+                                    input = GetPassword();
+                                    if (input == "b")
+                                    {
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        break;
+                                    }
+                                    password = input;
+                                }
+                                int index = dumbledore.STLoginCheck(username2, password2, StudentList);
+                                if (index > 0)
+                                {
+                                    Message.Program();
+                                    Message.LogedIn();
+                                    bool StudentMenu2 = true;
+                                    while (StudentMenu2)
+                                    {
+                                        Message.Loading(2);
+                                        Message.Program();
+                                        Message.Welcome(StudentList[index].FirstName + StudentList[index].LastName);
+                                        if (StudentList[index].NewSTMessage)
+                                        {
+                                            Message.NewMessage();
+                                        }
+                                        //Message.StudentMenu();
+                                        string input2 = Console.ReadLine();
+                                        switch (input2)
+                                        {
 
+                                        }
+                                    }
+                                }
                             }
                         }
                         break;
