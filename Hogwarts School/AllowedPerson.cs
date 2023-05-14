@@ -3,7 +3,7 @@ namespace Hogwarts
 {
 	public class AllowedPerson : Human
 	{
-		public AllowedPerson(Human human): base()
+		public AllowedPerson(Human human): base(human)
 		{
 
 		}

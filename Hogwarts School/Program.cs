@@ -47,6 +47,7 @@ namespace Hogwarts
             bool FirstLogin = true;
             Message.Program();
             Message.MainMenu();
+            //Console.WriteLine(StudentList[1].Password + " " + StudentList[1].Username);
 
             String input = Console.ReadLine();
 
@@ -204,7 +205,67 @@ namespace Hogwarts
                             }
                             else
                             {
+                                //Login check
+                                Message.Program();
+                                Console.WriteLine("Enter your Username and Password below");
+                                Console.Write("User Name: ");
+                                input = Console.ReadLine();
+                                string username3 = input;
+                                Console.Write("Password: ");
+                                input = GetPassword();
+                                string password3 = input;
+                                while (dumbledore.TELoginCheck(username3, password3, TeacherList) < 0)
+                                {
+                                    Message.Program();
+                                    Message.Wrong();
+                                    Console.WriteLine("Enter your Username and Password below");
+                                    Console.Write("User Name: ");
+                                    input = Console.ReadLine();
+                                    if (input == "b")
+                                    {
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        break;
+                                    }
+                                    username3 = input;
+                                    Console.Write("Password: ");
+                                    input = GetPassword();
+                                    if (input == "b")
+                                    {
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        Wait.ClearLine();
+                                        break;
+                                    }
+                                    password3 = input;
+                                }
+                                int index = dumbledore.TELoginCheck(username3, password3, TeacherList);
+                                if (index > 0)
+                                {
+                                    Message.Program();
+                                    Message.LogedIn();
+                                    bool TeacherMenu2 = true;
+                                    while (TeacherMenu2)
+                                    {
+                                        Message.Loading(2);
+                                        Message.Program();
+                                        Message.Welcome(TeacherList[index].FirstName + " " + TeacherList[index].LastName);
+                                        if (StudentList[index].NewSTMessage)
+                                        {
+                                            Message.NewMessage();
+                                        }
+                                        //Message.TeacherMenu();
+                                        string input2 = Console.ReadLine();
+                                        switch (input2)
+                                        {
 
+                                        }
+                                    }
+                                }
                             }
                         }
                         
@@ -247,7 +308,7 @@ namespace Hogwarts
                                         Wait.ClearLine();
                                         break;
                                     }
-                                    username = input;
+                                    username2 = input;
                                     Console.Write("Password: ");
                                     input = GetPassword();
                                     if (input == "b")
@@ -259,7 +320,7 @@ namespace Hogwarts
                                         Wait.ClearLine();
                                         break;
                                     }
-                                    password = input;
+                                    password2 = input;
                                 }
                                 int index = dumbledore.STLoginCheck(username2, password2, StudentList);
                                 if (index > 0)
@@ -271,7 +332,7 @@ namespace Hogwarts
                                     {
                                         Message.Loading(2);
                                         Message.Program();
-                                        Message.Welcome(StudentList[index].FirstName + StudentList[index].LastName);
+                                        Message.Welcome(StudentList[index].FirstName + " " + StudentList[index].LastName);
                                         if (StudentList[index].NewSTMessage)
                                         {
                                             Message.NewMessage();

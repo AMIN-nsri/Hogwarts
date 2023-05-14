@@ -39,13 +39,13 @@ namespace Hogwarts
             }
             return -1;
         }
-        public bool TELoginCheck(string username, string password, List<Teacher> teacherlist)
+        public int TELoginCheck(string username, string password, List<Teacher> teacherlist)
         {
             for (int i = 0; i < teacherlist.Count; i++)
             {
-                if (username == teacherlist[i].Username && password == teacherlist[i].Password) return true;
+                if (username == teacherlist[i].Username && password == teacherlist[i].Password) return i;
             }
-            return false;
+            return -1;
         }
         List<DMessage> DumbMessage = new List<DMessage>();
         
