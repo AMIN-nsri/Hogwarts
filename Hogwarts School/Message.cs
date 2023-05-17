@@ -106,6 +106,19 @@ namespace Hogwarts
             Console.WriteLine("Read Messages(R)");
             Console.WriteLine("All Messages(A)");
         }
+        public static void Congrats(Student st)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            if(st.Gender==EGender.Female)
+            {
+                Console.WriteLine($"Congratulations Ms. {st.LastName}!");
+            }
+            else Console.WriteLine($"Congratulations Mr. {st.LastName}!");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("You've been Invited to Hogwarts!");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
     }
 }
 

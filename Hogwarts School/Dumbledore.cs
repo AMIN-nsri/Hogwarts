@@ -3,10 +3,12 @@ namespace Hogwarts
 {
     public class DMessage
     {
-        public DMessage(string message)
+        public DMessage(string message, string sender)
         {
             this.message = message;
+            this.Sender = sender;
         }
+        public string Sender { get; set; }
         public string message { get; set; }
         public bool Seen { get; set; }
     }
@@ -14,10 +16,9 @@ namespace Hogwarts
 	{
 		public Dumbledore()
 		{
-            DumbMessage.Insert(0,new DMessage("hello"));
-            DumbMessage.Insert(0, new DMessage("hello2"));
-            DumbMessage.Insert(0, new DMessage("hello3"));
-            DumbMessage.Insert(0, new DMessage("hello4"));
+            DumbMessage.Insert(0, new DMessage("hello","amin"));
+            DumbMessage.Insert(0, new DMessage("hello2", "samin"));
+            DumbMessage.Insert(0, new DMessage("hello3", "sina"));
 
         }
         public Dorm Dorm { get; set; } // Make it function
@@ -52,46 +53,51 @@ namespace Hogwarts
         public bool NewDumbMessage;
         public void Inbox_UnRead()
         {
-            //if (DumbMessage.Count != 0)
-            //{
-                bool isThereAnyunreadMessage = false;
-                for (int i = 0; i < DumbMessage.Count; i++)
+            bool isThereAnyunreadMessage = false;
+            for (int i = 0; i < DumbMessage.Count; i++)
+            {
+                if (!DumbMessage[i].Seen)
                 {
-                    if (!DumbMessage[i].Seen)
-                    {
-                        isThereAnyunreadMessage = true;
-                        Console.WriteLine((i + 1) + "- " + DumbMessage[i].message);
-                        DumbMessage[i].Seen = true;
-
-                    }
+                    isThereAnyunreadMessage = true;
+                    Console.Write($"{(i + 1) + "-",-3} ");
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.Write($"{DumbMessage[i].Sender + ": ",-10}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write($"{DumbMessage[i].message}");
+                    Console.WriteLine();
+                    DumbMessage[i].Seen = true;
                 }
+            }
             if (!isThereAnyunreadMessage) Console.WriteLine("Empty!");
-            //}
-            //else Console.WriteLine("Empty!");
         }
         public void Inbox_Read()
         {
-            //if (DumbMessage.Count != 0)
-            //{
             bool isThereAnyreadMessage = false;
                 for (int i = 0; i < DumbMessage.Count; i++)
                 {
                     if (DumbMessage[i].Seen)
                     {
                     isThereAnyreadMessage = true;
-                    Console.WriteLine((i + 1) + "- " + DumbMessage[i].message);
+                    Console.Write($"{(i + 1) + "-",-3} ");
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.Write($"{DumbMessage[i].Sender + ": ",-10}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write($"{DumbMessage[i].message}");
+                    Console.WriteLine();
                     }
                 }
             if (!isThereAnyreadMessage) Console.WriteLine("Empty!");
-
-            //}
-            //else Console.WriteLine("Empty!");
         }
         public void Inbox_All()
         {
             for (int i = 0; i < DumbMessage.Count; i++)
             {
-                Console.WriteLine((i + 1) + "- " + DumbMessage[i].message);
+                Console.Write($"{(i + 1) + "-",-3} ");
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.Write($"{DumbMessage[i].Sender + ": ",-10}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write($"{DumbMessage[i].message}");
+                Console.WriteLine();
             }
         }
         public void Invite(Human human)

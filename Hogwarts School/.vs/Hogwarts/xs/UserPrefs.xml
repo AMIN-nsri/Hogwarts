@@ -1,17 +1,22 @@
 ﻿<Properties StartupConfiguration="{B328F39A-DD6A-4676-A36A-FFDE6E3A2735}|Default">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="381" Column="42" />
-      <File FileName="Message.cs" Line="107" Column="44" />
-      <File FileName="../../../Exercise 2 - MiniProject1/MiniProject-1---Hospital-System/Hospital System/Program.cs" />
+      <File FileName="Program.cs" Line="346" Column="73" />
+      <File FileName="Message.cs" Line="120" Column="1" />
+      <File FileName="../../../Exercise 2 - MiniProject1/MiniProject-1---Hospital-System/Hospital System/Program.cs" Line="1" Column="1" />
       <File FileName="../../../Exercise 2 - MiniProject1/MiniProject-1---Hospital-System/Hospital System/Message.cs" />
-      <File FileName="Dumbledore.cs" Line="48" Column="22" />
-      <File FileName="Human.cs" Line="4" Column="15" />
-      <File FileName="AllowedPerson.cs" Line="6" Column="48" />
-      <File FileName="Student.cs" Line="4" Column="34" />
-      <File FileName="Teacher.cs" Line="6" Column="22" />
-      <File FileName="Group.cs" Line="15" Column="1" />
-      <File FileName="Wait.cs" Line="14" Column="19" />
+      <File FileName="Dumbledore.cs" Line="112" Column="1" />
+      <File FileName="Human.cs" Line="16" Column="31" />
+      <File FileName="AllowedPerson.cs" Line="16" Column="48" />
+      <File FileName="Student.cs" Line="26" Column="16" />
+      <File FileName="Teacher.cs" Line="1" Column="1" />
+      <File FileName="Group.cs" Line="4" Column="20" />
+      <File FileName="Wait.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,11 +30,6 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Hogwarts PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Hogwarts PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

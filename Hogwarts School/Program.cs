@@ -33,10 +33,10 @@ namespace Hogwarts
                     human1.Password = data[6];
                     human1.Blood = (EBlood) Enum.Parse(typeof(EBlood), data[7].Replace(" ",""), true);
                     human1.Role = (ERole) Enum.Parse(typeof(ERole), data[8] , true);
-
+                    
                     if (ERole.Student == human1.Role) StudentList.Add(new Student(human1));
                     if (ERole.Teacher == human1.Role) TeacherList.Add(new Teacher(human1));
-
+                    
                     HumanList.Add(human1);
                     //if (human1.Role == ERole.Teacher) TeacherList.Add(human1); 
                 }
@@ -338,10 +338,17 @@ namespace Hogwarts
                                             Message.NewMessage();
                                         }
                                         //Message.StudentMenu();
-                                        string input2 = Console.ReadLine();
-                                        switch (input2)
+                                        if (StudentList[index].invited)
                                         {
-
+                                            StudentList[index].Pet = RandomEnumValue<EPet>();
+                                            StudentList[index].Group.Type = RandomEnumValue<EGroupType>();
+                                            Message.Congrats(StudentList[index]);
+                                            Console.WriteLine("Enter (+) if you have bag with you:");
+                                            string bag = Console.ReadLine();
+                                            if (bag == "+")
+                                            {
+                                                StudentList[index].Bag = true;
+                                            }
                                         }
                                     }
                                 }
@@ -388,5 +395,16 @@ namespace Hogwarts
             }
             return input.ToString();
         }
+
+        public static T RandomEnumValue<T>()
+        {
+            Random random = new Random();
+            Type type = typeof(T);
+            Array values = type.GetEnumValues();
+            int index = random.Next(values.Length);
+            T value = (T)values.GetValue(index);
+            return value;
+        }
+        
     }
 }
