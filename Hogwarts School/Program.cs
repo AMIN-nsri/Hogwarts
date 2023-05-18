@@ -12,12 +12,13 @@ namespace Hogwarts
     {
         public static void Main()
         {
+            //***** Singletone Admin Pattern
+            Dumbledore dumbledore = new Dumbledore();
             List<Human> HumanList = new List<Human>();
             List<Student> StudentList = new List<Student>();
             List<Teacher> TeacherList = new List<Teacher>();
 
-            
-
+            //***** Reading File
             using (StreamReader file = new StreamReader("file.tsv"))
             {
                 string In;
@@ -35,47 +36,55 @@ namespace Hogwarts
                     human1.Password = data[6];
                     human1.Blood = (EBlood) Enum.Parse(typeof(EBlood), data[7].Replace(" ",""), true);
                     human1.Role = (ERole) Enum.Parse(typeof(ERole), data[8] , true);
-                    
+
+                    //*** Check & Add to Student/Teacher List
                     if (ERole.Student == human1.Role) StudentList.Add(new Student(human1));
                     if (ERole.Teacher == human1.Role) TeacherList.Add(new Teacher(human1));
                     
                     HumanList.Add(human1);
-                    //if (human1.Role == ERole.Teacher) TeacherList.Add(human1); 
                 }
                 file.Close();
             }
 
-            Botanical botanical = new Botanical();
-            botanical.Capacity = 10;
-            botanical.Name = "botanical1";
-            botanical.Registered = 0;
-            botanical.Term = 1;
-            botanical.DayOfWeek = DayOfWeek.Monday;
-            botanical.Hour = 10;
+            //*********** TTTTEEEESSSSTTTT*************
+
+            //Botanical botanical = new Botanical();
+            //botanical.Capacity = 10;
+            //botanical.Name = "botanical3";
+            //botanical.Registered = 0;
+            //botanical.Term = 1;
+            //botanical.DayOfWeek = DayOfWeek.Monday;
+            //botanical.Hour = 10;
             //botanical.Term1.Add("hich");
             //botanical.Term2.Add("hich2");
             //botanical.Term3.Add("hich3");
             //botanical.Term4.Add("hich4");
+            //Chemistry chemistry = new Chemistry();
+            //chemistry.Name = "chem1";
+            //chemistry.Capacity = 10;
+            //chemistry.Registered = 1;
+            //chemistry.Term = 2;
+            //chemistry.DayOfWeek = DayOfWeek.Wednesday;
+            //chemistry.Hour = 14;
 
-            Course course1 = new Course();
-            course1.Name = "botanical1";
-            course1.DayOfWeek = DayOfWeek.Monday;
-            course1.Hour = 10;
-            course1.Capacity = 20;
-            course1.Registered = 3;
-            course1.Term = 1;
+            //Course course1 = new Course();
+            //course1.Name = "botanical1";
+            //course1.DayOfWeek = DayOfWeek.Monday;
+            //course1.Hour = 13;
+            //course1.Capacity = 20;
+            //course1.Registered = 3;
+            //course1.Term = 1;
 
-            StudentList[0].Courses.Add(course1);
+            //StudentList[0].Courses.Add(chemistry);
+            //StudentList[0].Courses.Add(course1);
+            //StudentList[0].Courses.Add(botanical);
 
-            StudentList[0].ScheduleTable(StudentList[0].Schedule(StudentList[0].Courses));
-
-            Dumbledore dumbledore = new Dumbledore();
-            bool FirstLogin = true;
-            //Message.Program();
-            //Message.MainMenu();
-
+            //StudentList[0].ScheduleTable(StudentList[0].Schedule(StudentList[0].Courses));
             //Console.WriteLine(StudentList[1].Password + " " + StudentList[1].Username);
 
+            bool FirstLogin = true;
+            Message.Program();
+            Message.MainMenu();
             String input = Console.ReadLine();
 
             while(input != "E")
@@ -83,7 +92,7 @@ namespace Hogwarts
                 switch (input)
                 {
                     case "D":
-                        //Login check
+                        //*** Dumbldore Login check
                         Message.Program();
                         Console.WriteLine("Enter your Username and Password below");
                         Console.Write("User Name: ");
@@ -126,6 +135,7 @@ namespace Hogwarts
                             FirstLogin = false;
                             Message.Program();
                             Message.LogedIn();
+                            //*** Dumbldore Menu
                             bool DumbledoreMenu = true;
                             while (DumbledoreMenu)
                             {
@@ -140,17 +150,20 @@ namespace Hogwarts
                                 string input2 = Console.ReadLine();
                                 switch (input2)
                                 {
+                                    // Sending Message
                                     case "S":
 
                                         break;
                                     case "b":
                                         DumbledoreMenu = false;
                                         break;
+                                    // Inbox
                                     case "I":
                                         Message.Program();
                                         bool inbox = true;
                                         while(inbox)
                                         {
+                                            dumbledore.NewDumbMessage = false;
                                             Message.Program();
                                             Message.InboxMenu();
                                             string input3 = Console.ReadLine();
@@ -218,6 +231,7 @@ namespace Hogwarts
                             }
                         }
                             break;
+                    // ***Teacher Menu
                     case "T":
                         Message.Program();
                         bool TeacherMenu = true;
@@ -297,6 +311,7 @@ namespace Hogwarts
                         }
                         
                         break;
+                    // *** Student Menu
                     case "S":
                         Message.Program();
                         bool StudentMenu = true;
@@ -357,14 +372,13 @@ namespace Hogwarts
                                     bool StudentMenu2 = true;
                                     while (StudentMenu2)
                                     {
-                                        Message.Loading(2);
+                                        Message.Loading(1);
                                         Message.Program();
                                         Message.Welcome(StudentList[index].FirstName + " " + StudentList[index].LastName);
                                         if (StudentList[index].NewSTMessage)
                                         {
                                             Message.NewMessage();
                                         }
-                                        //Message.StudentMenu();
                                         if (StudentList[index].invited)
                                         {
                                             StudentList[index].Pet = RandomEnumValue<EPet>();
@@ -376,7 +390,41 @@ namespace Hogwarts
                                             {
                                                 StudentList[index].Bag = true;
                                             }
-                                            Console.WriteLine("");
+                                            Message.Registered(StudentList[index]);
+                                            Wait.Dot("Directing To Your Panel in 10seconds", 10);
+                                        }
+                                        if (StudentList[index].Registered)
+                                        {
+                                            Message.Program();
+                                            Message.StudentMenu();
+                                            string input5 = Console.ReadLine();
+                                            switch (input5)
+                                            {
+                                                case "S":
+                                                    StudentList[index].ScheduleTable(StudentList[index].Schedule(StudentList[index].Courses));
+                                                    Console.WriteLine("Press any key to turn back");
+                                                    Console.ReadKey();
+                                                    break;
+                                                case "M":
+                                                    Console.WriteLine("Enter Your Massage:");
+                                                    string message = Console.ReadLine();
+                                                    dumbledore.SendMessageFromST(message, StudentList[index]);
+                                                    break;
+                                                case "T":
+                                                    DateTime dt1 = StudentList[index].Ticket.AddMinutes(-15);
+                                                    DateTime dt2 = StudentList[index].Ticket.AddMinutes(5);
+                                                    StudentList[index].Train(StudentList[index]);
+                                                    break;
+                                                case "b":
+                                                    StudentMenu2 = false;
+                                                    break;
+                                                case "E":
+                                                    System.Environment.Exit(0);
+                                                    break;
+                                                default:
+                                                    Message.Default(3);
+                                                    break;
+                                            }
                                         }
                                     }
                                 }

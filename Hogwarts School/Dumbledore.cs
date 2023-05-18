@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+
 namespace Hogwarts
 {
     public class DMessage
@@ -48,9 +50,15 @@ namespace Hogwarts
             }
             return -1;
         }
-        List<DMessage> DumbMessage = new List<DMessage>();
+        public List<DMessage> DumbMessage = new List<DMessage>();
         
         public bool NewDumbMessage;
+        public void SendMessageFromST(string message, Student st)
+        {
+            DumbMessage.Insert(0, new DMessage(message, st.FirstName + " " + st.LastName));
+            NewDumbMessage = true;
+            Console.WriteLine("Message Sent Succussfully!");
+        }
         public void Inbox_UnRead()
         {
             bool isThereAnyunreadMessage = false;

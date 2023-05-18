@@ -198,49 +198,57 @@ namespace Hogwarts
 		public void ScheduleTable(string[,] sch)
 		{
             Console.ForegroundColor = ConsoleColor.DarkYellow;
-            Console.WriteLine($"{"",-10} {"8-10",-12} {"10-12",-12} {"13-14",-12} {"14-16",-12} {"16-18",-12}");
+            Console.WriteLine($"{"",-10}  {"    8-10",-12}  {"    10-12",-12}   {"    13-14",-12}   {"    14-16",-12}   {"    16-18",-12}");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"{"",-10}  ------------- -------------- -------------- -------------- -------------- ");
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write($"{"Saturday",-10} ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine($"{sch[0, 0],-12} {sch[0,1],-12} {sch[0, 2],-12} {sch[0, 3],-12} {sch[0, 4],-12}");
-
+            Console.WriteLine($"|{sch[0, 0],-12} | {sch[0,1],-12} | {sch[0, 2],-12} | {sch[0, 3],-12} | {sch[0, 4],-12} |");
+            Console.WriteLine($"{"",-10}  ------------- -------------- -------------- -------------- -------------- ");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write($"{"Sunday",-10} ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine($"{sch[1, 0],-12} {sch[1, 1],-12} {sch[1, 2],-12} {sch[1, 3],-12} {sch[1, 4],-12}");
+            Console.WriteLine($"|{sch[1, 0],-12} | {sch[1, 1],-12} | {sch[1, 2],-12} | {sch[1, 3],-12} | {sch[1, 4],-12} |");
+            Console.WriteLine($"{"",-10}  ------------- -------------- -------------- -------------- -------------- ");
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write($"{"Monday",-10} ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine($"{sch[2, 0],-12} {sch[2, 1],-12} {sch[2, 2],-12} {sch[2, 3],-12} {sch[2, 4],-12}");
+            Console.WriteLine($"|{sch[2, 0],-12} | {sch[2, 1],-12} | {sch[2, 2],-12} | {sch[2, 3],-12} | {sch[2, 4],-12} |");
+            Console.WriteLine($"{"",-10}  ------------- -------------- -------------- -------------- -------------- ");
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write($"{"Tuesday",-10} ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine($"{sch[3, 0],-12} {sch[3, 1],-12} {sch[3, 2],-12} {sch[3, 3],-12} {sch[3, 4],-12}");
+            Console.WriteLine($"|{sch[3, 0],-12} | {sch[3, 1],-12} | {sch[3, 2],-12} | {sch[3, 3],-12} | {sch[3, 4],-12} |");
+            Console.WriteLine($"{"",-10}  ------------- -------------- -------------- -------------- -------------- ");
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write($"{"Wednesday",-10} ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine($"{sch[4, 0],-12} {sch[4, 1],-12} {sch[4, 2],-12} {sch[4, 3],-12} {sch[4, 4],-12}");
+            Console.WriteLine($"|{sch[4, 0],-12} | {sch[4, 1],-12} | {sch[4, 2],-12} | {sch[4, 3],-12} | {sch[4, 4],-12} |");
+            Console.WriteLine($"{"",-10}  ------------- -------------- -------------- -------------- -------------- ");
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write($"{"Thursday",-10} ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine($"{sch[5, 0],-12} {sch[5, 1],-12} {sch[5, 2],-12} {sch[5, 3],-12} {sch[5, 4],-12}");
+            Console.WriteLine($"|{sch[5, 0],-12} | {sch[5, 1],-12} | {sch[5, 2],-12} | {sch[5, 3],-12} | {sch[5, 4],-12} |");
+            Console.WriteLine($"{"",-10}  ------------- -------------- -------------- -------------- -------------- ");
 
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.Write($"{"Friday",-10} ");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine($"{sch[6, 0],-12} {sch[6, 1],-12} {sch[6, 2],-12} {sch[6, 3],-12} {sch[6, 4],-12}");
+            Console.WriteLine($"|{sch[6, 0],-12} | {sch[6, 1],-12} | {sch[6, 2],-12} | {sch[6, 3],-12} | {sch[6, 4],-12} |");
+            Console.WriteLine($"{"",-10}  ------------- -------------- -------------- -------------- -------------- ");
         }
     }
 }
