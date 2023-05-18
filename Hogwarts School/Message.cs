@@ -118,7 +118,11 @@ namespace Hogwarts
             Console.WriteLine("You've been Invited to Hogwarts!");
             Console.ForegroundColor = ConsoleColor.White;
         }
+        public static void Registered(Student st)
+        {
+            Console.WriteLine("Your Registration Completed Successfully!");
 
+        }
     }
 }
 

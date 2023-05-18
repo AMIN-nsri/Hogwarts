@@ -16,6 +16,8 @@ namespace Hogwarts
             List<Student> StudentList = new List<Student>();
             List<Teacher> TeacherList = new List<Teacher>();
 
+            
+
             using (StreamReader file = new StreamReader("file.tsv"))
             {
                 string In;
@@ -43,10 +45,35 @@ namespace Hogwarts
                 file.Close();
             }
 
+            Botanical botanical = new Botanical();
+            botanical.Capacity = 10;
+            botanical.Name = "botanical1";
+            botanical.Registered = 0;
+            botanical.Term = 1;
+            botanical.DayOfWeek = DayOfWeek.Monday;
+            botanical.Hour = 10;
+            //botanical.Term1.Add("hich");
+            //botanical.Term2.Add("hich2");
+            //botanical.Term3.Add("hich3");
+            //botanical.Term4.Add("hich4");
+
+            Course course1 = new Course();
+            course1.Name = "botanical1";
+            course1.DayOfWeek = DayOfWeek.Monday;
+            course1.Hour = 10;
+            course1.Capacity = 20;
+            course1.Registered = 3;
+            course1.Term = 1;
+
+            StudentList[0].Courses.Add(course1);
+
+            StudentList[0].ScheduleTable(StudentList[0].Schedule(StudentList[0].Courses));
+
             Dumbledore dumbledore = new Dumbledore();
             bool FirstLogin = true;
-            Message.Program();
-            Message.MainMenu();
+            //Message.Program();
+            //Message.MainMenu();
+
             //Console.WriteLine(StudentList[1].Password + " " + StudentList[1].Username);
 
             String input = Console.ReadLine();
@@ -349,6 +376,7 @@ namespace Hogwarts
                                             {
                                                 StudentList[index].Bag = true;
                                             }
+                                            Console.WriteLine("");
                                         }
                                     }
                                 }

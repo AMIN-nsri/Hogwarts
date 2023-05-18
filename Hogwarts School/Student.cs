@@ -23,7 +23,8 @@ namespace Hogwarts
 		public int Term { get; set; } = 1;
 		public int DormNumber { get; set; } //Khabgah
 		public bool NewSTMessage { get; set; }
-		//public bool Invited { get; set; }
+        public List<Course> Courses = new List<Course>();
+        //public bool Invited { get; set; }
 
         List<SMessage> STMessage = new List<SMessage>();
 
