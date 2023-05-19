@@ -21,7 +21,7 @@ namespace Hogwarts
 
 		}
 
-		public int PassedUnit { get; set; }
+        public int PassedUnit { get; set; } = 0;
 		public int Term { get; set; } = 1;
 		public int DormNumber { get; set; } //Khabgah
 		public bool NewSTMessage { get; set; }
@@ -30,8 +30,14 @@ namespace Hogwarts
         public bool Registered { get; set; }
 
         List<SMessage> STMessage = new List<SMessage>();
-
         public bool NewDumbMessage;
+        public void SendMessageToST(string message, Student st)
+        {
+            STMessage.Insert(0, new SMessage(message, st.FirstName + " " + st.LastName));
+            NewSTMessage = true;
+            Console.WriteLine("Message Sent Succussfully!");
+        }
+
         public void Inbox_UnRead()
         {
             bool isThereAnyunreadMessage = false;
@@ -75,13 +81,12 @@ namespace Hogwarts
             {
                 Console.Write($"{(i + 1) + "-",-3} ");
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.Write($"{STMessage[i].Sender + ": ",-10}");
+                Console.Write($"{STMessage[i].Sender + ": ",-12}");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write($"{STMessage[i].message}");
                 Console.WriteLine();
             }
         }
-
         public void Train(Student st)
         {
             DateTime dt1 = st.Ticket.AddMinutes(-15);
@@ -90,8 +95,12 @@ namespace Hogwarts
             int result2 = DateTime.Compare(st.Ticket,dt2);
             if (result1 > 0) Console.WriteLine("It's too early to get in! Come back later.");//return -1; //too early
             if (result1 <= 0 && result2 <= 0) Console.WriteLine("Welcome to HOGWARTS!");//return 0; //on time
-            if (result2 > 0) Console.WriteLine("It's too late to get in!");//return 1; //too late
-
+            if (result2 > 0)
+            {
+                Console.WriteLine("It's too late to get in!");//return 1; //too late
+                Console.WriteLine("Wait for Next Train in 1 hour.");
+                st.Ticket = st.Ticket.AddHours(1);
+            }
             //return 0;
         }
     }

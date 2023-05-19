@@ -17,8 +17,9 @@ namespace Hogwarts
 			this.Password = h2.Password;
 			this.Role = h2.Role;
 			this.Blood = h2.Blood;
-
+			this.invited = h2.invited;
         }
+		
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Birth { get; set; }

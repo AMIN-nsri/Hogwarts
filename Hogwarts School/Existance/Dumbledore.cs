@@ -42,6 +42,22 @@ namespace Hogwarts
             }
             return -1;
         }
+        public int SearchSTByID(string username, List<Student> studentlist)
+        {
+            for (int i = 0; i < studentlist.Count; i++)
+            {
+                if (username == studentlist[i].Username) return i;
+            }
+            return -1;
+        }
+        public int SearchByID(string username, List<Human> humanlist)
+        {
+            for (int i = 0; i < humanlist.Count; i++)
+            {
+                if (username == humanlist[i].Username) return i;
+            }
+            return -1;
+        }
         public int TELoginCheck(string username, string password, List<Teacher> teacherlist)
         {
             for (int i = 0; i < teacherlist.Count; i++)
@@ -108,7 +124,7 @@ namespace Hogwarts
                 Console.WriteLine();
             }
         }
-        public void Invite(Human human)
+        public void Invite(Human human,Student st)
         {
             if(human.Role== ERole.Teacher)
             {
@@ -117,11 +133,24 @@ namespace Hogwarts
             else if (human.Role==ERole.Student)
             {
                 human.invited = true;
-                Console.BackgroundColor = ConsoleColor.Green;
+                st.invited = true;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Student Invited Successfully!");
-                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("They Will Be Registered Once They Accept the Invitation.");
             }
+        }
+        public void SendTicket(Student st, DateTime dt)
+        {
+            st.Ticket = dt;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Ticket with TIME: {dt:f} Generated Successfully!");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Wait.Dot("Sending", 3);
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("Sent!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Notify the Student by Sending Message.");
         }
     }
 }

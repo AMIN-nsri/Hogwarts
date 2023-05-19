@@ -12,7 +12,7 @@ namespace Hogwarts
         public static void Topic()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("-------------Hogwarts School of Wizards-------------");
+            Console.Write("-------------------------Hogwarts School of Wizards-------------------------");
             Console.ForegroundColor = ConsoleColor.Black;
             Console.WriteLine("[b]ack");
             Console.ForegroundColor = ConsoleColor.White;
@@ -23,7 +23,7 @@ namespace Hogwarts
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             DateTime dt = DateTime.Now;
             
-            Console.WriteLine($"{dt.Year}/{dt.Month}/{dt.Day}                                   {dt.ToShortTimeString()}");
+            Console.WriteLine($"{dt.Year}/{dt.Month}/{dt.Day}                                                           {dt.ToShortTimeString()}");
             Console.ForegroundColor = ConsoleColor.White;
         }
         // Loading Please Wait
@@ -90,6 +90,7 @@ namespace Hogwarts
             
             Console.WriteLine("Choose one (type key letter):");
             Console.WriteLine("Send Invitation(S)");
+            Console.WriteLine("Send Ticket(T)");
             Console.WriteLine("Inbox(I)");
             Console.WriteLine("Send Message(M)");
             //Console.WriteLine("Student(S)");
@@ -130,6 +131,8 @@ namespace Hogwarts
             Console.WriteLine("Here's Your Ticket:");
             Console.WriteLine($"WAGON: {Wagon}      SEAT: {Seat}");
             Console.WriteLine($"TIME: {st.Ticket.Date:f}");
+            if (st.Bag) Console.WriteLine($"BAG: YES");
+            else Console.WriteLine($"BAG: NO");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Please Be at the Station 15 Minutes Earlier!");
             Console.ForegroundColor = ConsoleColor.White;
@@ -139,6 +142,7 @@ namespace Hogwarts
         public static void StudentMenu()
         {
             Console.WriteLine("Choose one (type key letter):");
+            Console.WriteLine("Inbox(I)");
             Console.WriteLine("Do Exercises(DE)");
             Console.WriteLine("Weekly Schedule(S)");
             Console.WriteLine("Select Units(U)");

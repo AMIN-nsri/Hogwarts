@@ -151,8 +151,41 @@ namespace Hogwarts
                                 switch (input2)
                                 {
                                     // Sending Message
-                                    case "S":
-
+                                    case "M":
+                                        Message.Program();
+                                        Console.WriteLine("Enter Student ID:");
+                                        string ID = Console.ReadLine();
+                                        int index = dumbledore.SearchSTByID(ID, StudentList);
+                                        if (index < 0) Console.WriteLine("User Not Found!");
+                                        else
+                                        {
+                                            Console.WriteLine($"Sending Message to: {StudentList[index].FirstName} {StudentList[index].LastName}");
+                                            Console.WriteLine("Enter Your Message:");
+                                            string message = Console.ReadLine();
+                                            StudentList[index].SendMessageToST(message, StudentList[index]);
+                                        }
+                                        break;
+                                    // Sending Tickets
+                                    case "T":
+                                        Message.Program();
+                                        Console.WriteLine("Enter Student ID:");
+                                        string ID2 = Console.ReadLine();
+                                        int index2 = dumbledore.SearchSTByID(ID2, StudentList);
+                                        if (index2 < 0) Console.WriteLine("User Not Found!");
+                                        else
+                                        {
+                                            Wait.ClearLine();
+                                            Wait.ClearLine();
+                                            Console.WriteLine($"Sending Ticket to '{StudentList[index2].FirstName} {StudentList[index2].LastName}':");
+                                            Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                            Wait.Dot("Generating", 4);
+                                            Random random = new Random();
+                                            DateTime dt2 = DateTime.Now;
+                                            DateTime randtime = dt2.AddDays(random.Next(1)).AddHours(random.Next(24)).AddMinutes(random.Next(60));
+                                            dumbledore.SendTicket(StudentList[index2], randtime);
+                                            Console.WriteLine("Press any key to turn back");
+                                            Console.ReadKey();
+                                        }
                                         break;
                                     case "b":
                                         DumbledoreMenu = false;
@@ -221,6 +254,25 @@ namespace Hogwarts
 
                                         }
                                         break;
+                                    // Inviting
+                                    case "S":
+                                        Message.Program();
+                                        Console.WriteLine("Enter Human ID:");
+                                        string HID = Console.ReadLine();
+                                        int index3 = dumbledore.SearchByID(HID, HumanList);
+                                        int stindex = dumbledore.SearchSTByID(HID, StudentList);
+                                        if (index3 < 0) Console.WriteLine("Human Not Found!");
+                                        else
+                                        {
+                                            dumbledore.Invite(HumanList[index3], StudentList[stindex]);
+                                            Console.ReadKey();
+                                        }
+                                        //Console.WriteLine($"Name.{index3}=> {HumanList[index3].FirstName + " " + HumanList[index3].LastName}");
+                                        //Console.WriteLine($"Invited=> {HumanList[index3].invited}");
+                                        //Console.WriteLine($"Name.00=> {StudentList[0].FirstName + " " + StudentList[0].LastName}");
+                                        //Console.WriteLine($"Invited=> {StudentList[0].invited}");
+                                        //Console.ReadKey();
+                                        break;
                                     case "E":
                                         System.Environment.Exit(0);
                                         break;
@@ -285,7 +337,7 @@ namespace Hogwarts
                                     password3 = input;
                                 }
                                 int index = dumbledore.TELoginCheck(username3, password3, TeacherList);
-                                if (index > 0)
+                                if (index >= 0)
                                 {
                                     Message.Program();
                                     Message.LogedIn();
@@ -314,9 +366,9 @@ namespace Hogwarts
                     // *** Student Menu
                     case "S":
                         Message.Program();
-                        bool StudentMenu = true;
-                        while (StudentMenu)
-                        {
+                        //bool StudentMenu = true;
+                        //while (StudentMenu)
+                        //{
                             if (FirstLogin)
                             {
                                 Message.FirstLogin();
@@ -335,6 +387,7 @@ namespace Hogwarts
                                 Console.Write("Password: ");
                                 input = GetPassword();
                                 string password2 = input;
+                                int index = dumbledore.STLoginCheck(username2, password2, StudentList);
                                 while (dumbledore.STLoginCheck(username2, password2, StudentList) < 0)
                                 {
                                     Message.Program();
@@ -364,71 +417,143 @@ namespace Hogwarts
                                     }
                                     password2 = input;
                                 }
-                                int index = dumbledore.STLoginCheck(username2, password2, StudentList);
-                                if (index > 0)
+                            if (index >= 0)
+                            {
+                                //Console.WriteLine($"Name.{index}=> {StudentList[index].FirstName + " " + StudentList[index].LastName}");
+                                //Console.WriteLine($"Invited=> {StudentList[index].invited}");
+                                //Console.WriteLine($"Name.00=> {HumanList[1].FirstName + " " + HumanList[1].LastName}");
+                                //Console.WriteLine($"Invited=> {HumanList[1].invited}");
+                                //Console.ReadKey();
+                                Message.Program();
+                                Message.LogedIn();
+                                bool StudentMenu2 = true;
+                                while (StudentMenu2)
                                 {
                                     Message.Program();
-                                    Message.LogedIn();
-                                    bool StudentMenu2 = true;
-                                    while (StudentMenu2)
+                                    Message.Welcome(StudentList[index].FirstName + " " + StudentList[index].LastName);
+                                    if (StudentList[index].NewSTMessage)
                                     {
-                                        Message.Loading(1);
+                                        Message.NewMessage();
+                                    }
+                                    if (!StudentList[index].invited)
+                                    {
+                                        Console.WriteLine("You Are Not Allowed to Hogwarts!");
+                                        Console.WriteLine("Press any key to exit.");
+                                        Console.ReadKey();
+                                        break;
+                                    }
+                                    else if (StudentList[index].invited)
+                                    {
+                                        StudentList[index].Pet = RandomEnumValue<EPet>();
+                                        StudentList[index].Group.Type = RandomEnumValue<EGroupType>();
+                                        Message.Congrats(StudentList[index]);
+                                        Console.WriteLine("Enter (+) if you have bag with you:");
+                                        string bag = Console.ReadLine();
+                                        if (bag == "+")
+                                        {
+                                            StudentList[index].Bag = true;
+                                        }
+                                        Message.Registered(StudentList[index]);
+                                        Wait.Dot("Directing To Your Panel in 10secs", 10);
+                                    }
+                                    if (StudentList[index].Registered)
+                                    {
                                         Message.Program();
-                                        Message.Welcome(StudentList[index].FirstName + " " + StudentList[index].LastName);
-                                        if (StudentList[index].NewSTMessage)
+                                        Message.StudentMenu();
+                                        string input5 = Console.ReadLine();
+                                        switch (input5)
                                         {
-                                            Message.NewMessage();
-                                        }
-                                        if (StudentList[index].invited)
-                                        {
-                                            StudentList[index].Pet = RandomEnumValue<EPet>();
-                                            StudentList[index].Group.Type = RandomEnumValue<EGroupType>();
-                                            Message.Congrats(StudentList[index]);
-                                            Console.WriteLine("Enter (+) if you have bag with you:");
-                                            string bag = Console.ReadLine();
-                                            if (bag == "+")
-                                            {
-                                                StudentList[index].Bag = true;
-                                            }
-                                            Message.Registered(StudentList[index]);
-                                            Wait.Dot("Directing To Your Panel in 10seconds", 10);
-                                        }
-                                        if (StudentList[index].Registered)
-                                        {
-                                            Message.Program();
-                                            Message.StudentMenu();
-                                            string input5 = Console.ReadLine();
-                                            switch (input5)
-                                            {
-                                                case "S":
-                                                    StudentList[index].ScheduleTable(StudentList[index].Schedule(StudentList[index].Courses));
-                                                    Console.WriteLine("Press any key to turn back");
-                                                    Console.ReadKey();
-                                                    break;
-                                                case "M":
-                                                    Console.WriteLine("Enter Your Massage:");
-                                                    string message = Console.ReadLine();
-                                                    dumbledore.SendMessageFromST(message, StudentList[index]);
-                                                    break;
-                                                case "T":
-                                                    DateTime dt1 = StudentList[index].Ticket.AddMinutes(-15);
-                                                    DateTime dt2 = StudentList[index].Ticket.AddMinutes(5);
-                                                    StudentList[index].Train(StudentList[index]);
-                                                    break;
-                                                case "b":
-                                                    StudentMenu2 = false;
-                                                    break;
-                                                case "E":
-                                                    System.Environment.Exit(0);
-                                                    break;
-                                                default:
-                                                    Message.Default(3);
-                                                    break;
-                                            }
+                                            case "S":
+                                                StudentList[index].ScheduleTable(StudentList[index].Schedule(StudentList[index].Courses));
+                                                Console.WriteLine("Press any key to turn back");
+                                                Console.ReadKey();
+                                                break;
+                                            case "M":
+                                                Console.WriteLine("Enter Your Massage:");
+                                                string message = Console.ReadLine();
+                                                dumbledore.SendMessageFromST(message, StudentList[index]);
+                                                break;
+                                            case "T":
+                                                DateTime dt1 = StudentList[index].Ticket.AddMinutes(-15);
+                                                DateTime dt2 = StudentList[index].Ticket.AddMinutes(5);
+                                                StudentList[index].Train(StudentList[index]);
+                                                break;
+                                            case "I":
+                                                Message.Program();
+                                                bool inbox = true;
+                                                while (inbox)
+                                                {
+                                                    StudentList[index].NewSTMessage = false;
+                                                    Message.Program();
+                                                    Message.InboxMenu();
+                                                    string input3 = Console.ReadLine();
+                                                    switch (input3)
+                                                    {
+                                                        case "b":
+                                                            inbox = false;
+                                                            break;
+                                                        case "A":
+                                                            Message.Program();
+                                                            StudentList[index].Inbox_All();
+                                                            string input4 = Console.ReadLine();
+                                                            switch (input4)
+                                                            {
+                                                                case "b":
+                                                                    inbox = false;
+                                                                    break;
+                                                                default:
+                                                                    Message.Default(3);
+                                                                    break;
+                                                            }
+                                                            break;
+                                                        case "U":
+                                                            Message.Program();
+                                                            StudentList[index].Inbox_UnRead();
+                                                            string input6 = Console.ReadLine();
+                                                            switch (input6)
+                                                            {
+                                                                case "b":
+                                                                    inbox = false;
+                                                                    break;
+                                                                default:
+                                                                    Message.Default(3);
+                                                                    break;
+                                                            }
+                                                            break;
+                                                        case "R":
+                                                            Message.Program();
+                                                            StudentList[index].Inbox_Read();
+                                                            input5 = Console.ReadLine();
+                                                            switch (input5)
+                                                            {
+                                                                case "b":
+                                                                    inbox = false;
+                                                                    break;
+                                                                default:
+                                                                    Message.Default(3);
+                                                                    break;
+                                                            }
+                                                            break;
+                                                        default:
+                                                            Message.Default(3);
+                                                            break;
+                                                    }
+                                                }
+                                                break;
+                                            case "b":
+                                                StudentMenu2 = false;
+                                                break;
+                                            case "E":
+                                                System.Environment.Exit(0);
+                                                break;
+                                            default:
+                                                Message.Default(3);
+                                                break;
                                         }
                                     }
                                 }
                             }
+                            //}
                         }
                         break;
                     default:
