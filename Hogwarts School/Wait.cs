@@ -10,9 +10,13 @@ namespace Hogwarts
         //  ****Method For Clearing Last Line
         public static void ClearLine()
         {
-            Console.SetCursorPosition(0, Console.CursorTop - 1);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, Console.CursorTop - 1);
+            if (Console.CursorTop >= 1)
+            {
+
+                Console.SetCursorPosition(0, Console.CursorTop-1);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(0, Console.CursorTop - 1);
+            }
         }
 
         //  ****Method For Make Pause With Dot Wait Animation

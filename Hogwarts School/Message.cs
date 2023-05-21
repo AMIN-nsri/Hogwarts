@@ -123,20 +123,20 @@ namespace Hogwarts
         public static void Registered(Student st)
         {
             Random randomnum = new Random();
-            int Seat = randomnum.Next(20);
-            int Wagon = randomnum.Next(11);
+            int Seat = randomnum.Next(1,20);
+            int Wagon = randomnum.Next(1,11);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Your Registration Completed Successfully!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Here's Your Ticket:");
             Console.WriteLine($"WAGON: {Wagon}      SEAT: {Seat}");
-            Console.WriteLine($"TIME: {st.Ticket.Date:f}");
+            Console.WriteLine($"TIME: {st.Ticket:f}");
             if (st.Bag) Console.WriteLine($"BAG: YES");
             else Console.WriteLine($"BAG: NO");
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Please Be at the Station 15 Minutes Earlier!");
             Console.ForegroundColor = ConsoleColor.White;
-            st.invited = false;
+            //st.invited = false;
             st.Registered = true;
         }
         public static void StudentMenu()

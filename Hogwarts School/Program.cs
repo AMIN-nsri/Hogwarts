@@ -347,10 +347,7 @@ namespace Hogwarts
                                         Message.Loading(2);
                                         Message.Program();
                                         Message.Welcome(TeacherList[index].FirstName + " " + TeacherList[index].LastName);
-                                        if (StudentList[index].NewSTMessage)
-                                        {
-                                            Message.NewMessage();
-                                        }
+
                                         //Message.TeacherMenu();
                                         string input2 = Console.ReadLine();
                                         switch (input2)
@@ -379,51 +376,53 @@ namespace Hogwarts
                             else
                             {
                                 //Login check
+                                //Message.Program();
+                                //Console.WriteLine("Enter your Username and Password below");
+                                //Console.Write("User Name: ");
+                                //input = Console.ReadLine();
+                                //string username2 = input;
+                                //Console.Write("Password: ");
+                                //input = GetPassword();
+                            string password2 = input;
+                            string username2 = input;
+                            int index = -2;
+                            do
+                            {
                                 Message.Program();
+                                if (index == -1)
+                                {
+                                    Message.Wrong();
+                                }
                                 Console.WriteLine("Enter your Username and Password below");
                                 Console.Write("User Name: ");
                                 input = Console.ReadLine();
-                                string username2 = input;
+                                if (input == "b")
+                                {
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    break;
+                                }
+                                username2 = input;
                                 Console.Write("Password: ");
                                 input = GetPassword();
-                                string password2 = input;
-                                int index = dumbledore.STLoginCheck(username2, password2, StudentList);
-                                while (dumbledore.STLoginCheck(username2, password2, StudentList) < 0)
+                                if (input == "b")
                                 {
-                                    Message.Program();
-                                    Message.Wrong();
-                                    Console.WriteLine("Enter your Username and Password below");
-                                    Console.Write("User Name: ");
-                                    input = Console.ReadLine();
-                                    if (input == "b")
-                                    {
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        break;
-                                    }
-                                    username2 = input;
-                                    Console.Write("Password: ");
-                                    input = GetPassword();
-                                    if (input == "b")
-                                    {
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        break;
-                                    }
-                                    password2 = input;
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    break;
                                 }
+                                password2 = input;
+                                index = dumbledore.STLoginCheck(username2, password2, StudentList);
+                            } while (index<0);
+                                
+                                    
                             if (index >= 0)
                             {
-                                //Console.WriteLine($"Name.{index}=> {StudentList[index].FirstName + " " + StudentList[index].LastName}");
-                                //Console.WriteLine($"Invited=> {StudentList[index].invited}");
-                                //Console.WriteLine($"Name.00=> {HumanList[1].FirstName + " " + HumanList[1].LastName}");
-                                //Console.WriteLine($"Invited=> {HumanList[1].invited}");
-                                //Console.ReadKey();
                                 Message.Program();
                                 Message.LogedIn();
                                 bool StudentMenu2 = true;
@@ -442,7 +441,7 @@ namespace Hogwarts
                                         Console.ReadKey();
                                         break;
                                     }
-                                    else if (StudentList[index].invited)
+                                    else if (StudentList[index].invited && !StudentList[index].Registered)
                                     {
                                         StudentList[index].Pet = RandomEnumValue<EPet>();
                                         StudentList[index].Group.Type = RandomEnumValue<EGroupType>();
@@ -453,8 +452,11 @@ namespace Hogwarts
                                         {
                                             StudentList[index].Bag = true;
                                         }
+                                        Message.Program();
                                         Message.Registered(StudentList[index]);
-                                        Wait.Dot("Directing To Your Panel in 10secs", 10);
+                                        Console.WriteLine("Press any key to exit");
+                                        Console.ReadKey();
+                                        Wait.Dot("Directing To Your Panel in 5secs",5);
                                     }
                                     if (StudentList[index].Registered)
                                     {
@@ -464,19 +466,24 @@ namespace Hogwarts
                                         switch (input5)
                                         {
                                             case "S":
+                                                Message.Program();
                                                 StudentList[index].ScheduleTable(StudentList[index].Schedule(StudentList[index].Courses));
                                                 Console.WriteLine("Press any key to turn back");
                                                 Console.ReadKey();
                                                 break;
                                             case "M":
+                                                Message.Program();
                                                 Console.WriteLine("Enter Your Massage:");
                                                 string message = Console.ReadLine();
                                                 dumbledore.SendMessageFromST(message, StudentList[index]);
+                                                Console.WriteLine("Press any key to turn back");
+                                                Console.ReadLine();
                                                 break;
                                             case "T":
-                                                DateTime dt1 = StudentList[index].Ticket.AddMinutes(-15);
-                                                DateTime dt2 = StudentList[index].Ticket.AddMinutes(5);
+                                                Message.Program();
                                                 StudentList[index].Train(StudentList[index]);
+                                                Console.WriteLine("Press any key to turn back");
+                                                Console.ReadKey();
                                                 break;
                                             case "I":
                                                 Message.Program();

@@ -18,10 +18,7 @@ namespace Hogwarts
 	{
 		public Dumbledore()
 		{
-            DumbMessage.Insert(0, new DMessage("hello","amin"));
-            DumbMessage.Insert(0, new DMessage("hello2", "samin"));
-            DumbMessage.Insert(0, new DMessage("hello3", "sina"));
-
+           
         }
         public Dorm Dorm { get; set; } // Make it function
 
@@ -134,6 +131,10 @@ namespace Hogwarts
             {
                 human.invited = true;
                 st.invited = true;
+                Random random = new Random();
+                DateTime dt2 = DateTime.Now;
+                DateTime randtime = dt2.AddHours(random.Next(1)).AddMinutes(random.Next(60));
+                st.Ticket = randtime;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Student Invited Successfully!");
                 Console.ForegroundColor = ConsoleColor.White;
