@@ -32,11 +32,7 @@ namespace Hogwarts
 
 		public bool invited;
 
-		
-		//public void Display()
-		//{
-		//	Console.WriteLine($"{FirstName} {LastName} \t {Birth} \t {Gender} \t {Blood} \t");
-		//}
+				
     }
 }
 

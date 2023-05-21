@@ -26,8 +26,7 @@ namespace Hogwarts
 		public int DormNumber { get; set; } //Khabgah
 		public bool NewSTMessage { get; set; }
         public List<Course> Courses = new List<Course>();
-        public DateTime
-            Ticket { get; set; }
+        public DateTime Ticket { get; set; }
         public bool Registered { get; set; }
 
         List<SMessage> STMessage = new List<SMessage>();
@@ -47,9 +46,8 @@ namespace Hogwarts
                 if (!STMessage[i].Seen)
                 {
                     isThereAnyunreadMessage = true;
-                    Console.Write($"{(i + 1) + "-",-3} ");
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.Write($"{STMessage[i].Sender + ": ",-10}");
+                    Console.Write($"{(i + 1) + "-",-3} ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write($"{STMessage[i].message}");
                     Console.WriteLine();
@@ -66,9 +64,8 @@ namespace Hogwarts
                 if (STMessage[i].Seen)
                 {
                     isThereAnyreadMessage = true;
-                    Console.Write($"{(i + 1) + "-",-3} ");
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Console.Write($"{STMessage[i].Sender + ": ",-10}");
+                    Console.Write($"{(i + 1) + "-",-3} ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Write($"{STMessage[i].message}");
                     Console.WriteLine();
@@ -80,9 +77,8 @@ namespace Hogwarts
         {
             for (int i = 0; i < STMessage.Count; i++)
             {
-                Console.Write($"{(i + 1) + "-",-3} ");
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.Write($"{STMessage[i].Sender + ": ",-12}");
+                Console.Write($"{(i + 1) + "-",-3} ");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write($"{STMessage[i].message}");
                 Console.WriteLine();

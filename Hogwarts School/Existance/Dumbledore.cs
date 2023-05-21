@@ -133,7 +133,7 @@ namespace Hogwarts
                 st.invited = true;
                 Random random = new Random();
                 DateTime dt2 = DateTime.Now;
-                DateTime randtime = dt2.AddHours(random.Next(1)).AddMinutes(random.Next(60));
+                DateTime randtime = dt2.AddMinutes(random.Next(60));
                 st.Ticket = randtime;
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Student Invited Successfully!");

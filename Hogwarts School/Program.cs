@@ -430,10 +430,7 @@ namespace Hogwarts
                                 {
                                     Message.Program();
                                     Message.Welcome(StudentList[index].FirstName + " " + StudentList[index].LastName);
-                                    if (StudentList[index].NewSTMessage)
-                                    {
-                                        Message.NewMessage();
-                                    }
+             
                                     if (!StudentList[index].invited)
                                     {
                                         Console.WriteLine("You Are Not Allowed to Hogwarts!");
@@ -461,6 +458,11 @@ namespace Hogwarts
                                     if (StudentList[index].Registered)
                                     {
                                         Message.Program();
+                                        Message.Welcome(StudentList[index].FirstName + " " + StudentList[index].LastName);
+                                        if (StudentList[index].NewSTMessage)
+                                        {
+                                            Message.NewMessage();
+                                        }
                                         Message.StudentMenu();
                                         string input5 = Console.ReadLine();
                                         switch (input5)
