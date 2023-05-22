@@ -1,21 +1,22 @@
 ﻿<Properties StartupConfiguration="{B328F39A-DD6A-4676-A36A-FFDE6E3A2735}|Default">
   <MonoDevelop.Ide.ItemProperties.Hogwarts PreferredExecutionTarget="MonoDevelop.Default" />
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="489" Column="67" />
-      <File FileName="Message.cs" />
-      <File FileName="Wait.cs" />
-      <File FileName="Existance/Dumbledore.cs" />
-      <File FileName="Existance/Student.cs" />
-      <File FileName="Existance/AllowedPerson.cs" />
-      <File FileName="Existance/Teacher.cs" />
+      <File FileName="Program.cs" Line="580" Column="42" />
+      <File FileName="Message.cs" Line="179" Column="40" />
+      <File FileName="Existance/Dumbledore.cs" Line="180" Column="21" />
+      <File FileName="Existance/Student.cs" Line="1" Column="1" />
+      <File FileName="Existance/Teacher.cs" Line="8" Column="1" />
       <File FileName="Existance/Human.cs" />
+      <File FileName="Lessons/Botanical.cs" />
+      <File FileName="Lessons/Course.cs" Line="21" Column="26" />
+      <File FileName="Existance/AllowedPerson.cs" Line="30" Column="56" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

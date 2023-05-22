@@ -150,6 +150,43 @@ namespace Hogwarts
             Console.WriteLine("Enter Train(T)");
             Console.WriteLine("Exit(E)");
         }
+        public static void TeacherMenu()
+        {
+            Console.WriteLine("Choose one (type key letter):");
+            Console.WriteLine("Present a Lesson(L)");
+            Console.WriteLine("Define a Task(T)");
+            Console.WriteLine("Enter Final Score(S)");
+            Console.WriteLine("Exit(E)");
+        }
+        public static void Lessons()
+        {
+            Console.WriteLine("Choose Lesson:");
+            Console.WriteLine("(a) Botanical");
+            Console.WriteLine("(b) Chemistry");
+            Console.WriteLine("(c) Magic Knowledge");
+            Console.WriteLine("(d) Sport");
+        }
+        public static void WeekDays()
+        {
+            Console.WriteLine("Choose Day:");
+            Console.WriteLine("(a) Saturday");
+            Console.WriteLine("(b) Sunday");
+            Console.WriteLine("(c) Monday");
+            Console.WriteLine("(d) Tuesday");
+            Console.WriteLine("(e) Wednesday");
+            Console.WriteLine("(f) Thursday");
+            Console.WriteLine("(g) Friday");
+            Console.WriteLine("(Q) Done");
+        }
+        public static void Hours()
+        {
+            Console.WriteLine("Choose Hour:");
+            Console.WriteLine("(a) 8-10");
+            Console.WriteLine("(b) 10-12");
+            Console.WriteLine("(c) 13-14");
+            Console.WriteLine("(d) 14-16");
+            Console.WriteLine("(e) 16-18");
+        }
     }
 }
 

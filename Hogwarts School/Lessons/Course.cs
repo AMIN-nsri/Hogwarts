@@ -17,11 +17,13 @@ namespace Hogwarts
             this.Term = course.Term;
         }
         public string Name { get; set; }
-        public DayOfWeek DayOfWeek { get; set; }
-        public int Hour { get; set; }
-        public int Registered { get; set; }
+        public List<DayOfWeek> DayOfWeek { get; set; } = new List<DayOfWeek>();
+        public List<int> Hour { get; set; } = new List<int>();
+        public int Registered { get; set; } = 0;
         public int Capacity { get; set; }
         public int Term { get; set; }
+        public Teacher Teacher { get; set; } = new Teacher();
+
     }
 }
 

@@ -32,164 +32,188 @@ namespace Hogwarts
             string[,] sch = new string[7, 5];
             for (int i=0; i<courses.Count;i++)
             {
-                switch (courses[i].DayOfWeek)
+                for (int j = 0; j < courses[i].DayOfWeek.Count; j++)
                 {
-                    case DayOfWeek.Saturday:
-                        switch (courses[i].Hour)
-                        {
-                            case 8:
-                                sch[0, 0] = courses[i].Name;
-                                break;
-                            case 10:
-                                sch[0, 1] = courses[i].Name;
-                                break;
-                            case 13:
-                                sch[0, 2] = courses[i].Name;
-                                break;
-                            case 14:
-                                sch[0, 3] = courses[i].Name;
-                                break;
-                            case 16:
-                                sch[0, 4] = courses[i].Name;
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case DayOfWeek.Sunday:
-                        switch (courses[i].Hour)
-                        {
-                            case 8:
-                                sch[1, 0] = courses[i].Name;
-                                break;
-                            case 10:
-                                sch[1, 1] = courses[i].Name;
-                                break;
-                            case 13:
-                                sch[1, 2] = courses[i].Name;
-                                break;
-                            case 14:
-                                sch[1, 3] = courses[i].Name;
-                                break;
-                            case 16:
-                                sch[1, 4] = courses[i].Name;
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case DayOfWeek.Monday:
-                        switch (courses[i].Hour)
-                        {
-                            case 8:
-                                sch[2, 0] = courses[i].Name;
-                                break;
-                            case 10:
-                                sch[2, 1] = courses[i].Name;
-                                break;
-                            case 13:
-                                sch[2, 2] = courses[i].Name;
-                                break;
-                            case 14:
-                                sch[2, 3] = courses[i].Name;
-                                break;
-                            case 16:
-                                sch[2, 4] = courses[i].Name;
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case DayOfWeek.Tuesday:
-                        switch (courses[i].Hour)
-                        {
-                            case 8:
-                                sch[3, 0] = courses[i].Name;
-                                break;
-                            case 10:
-                                sch[3, 1] = courses[i].Name;
-                                break;
-                            case 13:
-                                sch[3, 2] = courses[i].Name;
-                                break;
-                            case 14:
-                                sch[3, 3] = courses[i].Name;
-                                break;
-                            case 16:
-                                sch[3, 4] = courses[i].Name;
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case DayOfWeek.Wednesday:
-                        switch (courses[i].Hour)
-                        {
-                            case 8:
-                                sch[4, 0] = courses[i].Name;
-                                break;
-                            case 10:
-                                sch[4, 1] = courses[i].Name;
-                                break;
-                            case 13:
-                                sch[4, 2] = courses[i].Name;
-                                break;
-                            case 14:
-                                sch[4, 3] = courses[i].Name;
-                                break;
-                            case 16:
-                                sch[4, 4] = courses[i].Name;
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case DayOfWeek.Thursday:
-                        switch (courses[i].Hour)
-                        {
-                            case 8:
-                                sch[5, 0] = courses[i].Name;
-                                break;
-                            case 10:
-                                sch[5, 1] = courses[i].Name;
-                                break;
-                            case 13:
-                                sch[5, 2] = courses[i].Name;
-                                break;
-                            case 14:
-                                sch[5, 3] = courses[i].Name;
-                                break;
-                            case 16:
-                                sch[5, 4] = courses[i].Name;
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case DayOfWeek.Friday:
-                        switch (courses[i].Hour)
-                        {
-                            case 8:
-                                sch[6, 0] = courses[i].Name;
-                                break;
-                            case 10:
-                                sch[6, 1] = courses[i].Name;
-                                break;
-                            case 13:
-                                sch[6, 2] = courses[i].Name;
-                                break;
-                            case 14:
-                                sch[6, 3] = courses[i].Name;
-                                break;
-                            case 16:
-                                sch[6, 4] = courses[i].Name;
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
+                    switch (courses[i].DayOfWeek[j])
+                    {
+                        case DayOfWeek.Saturday:
+                            for (int k=0; k<courses[i].Hour.Count;k++)
+                            {
+                                switch (courses[i].Hour[k])
+                                {
+                                    case 8:
+                                        sch[0, 0] = courses[i].Name;
+                                        break;
+                                    case 10:
+                                        sch[0, 1] = courses[i].Name;
+                                        break;
+                                    case 13:
+                                        sch[0, 2] = courses[i].Name;
+                                        break;
+                                    case 14:
+                                        sch[0, 3] = courses[i].Name;
+                                        break;
+                                    case 16:
+                                        sch[0, 4] = courses[i].Name;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        case DayOfWeek.Sunday:
+                            for (int k = 0; k < courses[i].Hour.Count; k++)
+                            {
+                                switch (courses[i].Hour[k])
+                                {
+                                    case 8:
+                                        sch[1, 0] = courses[i].Name;
+                                        break;
+                                    case 10:
+                                        sch[1, 1] = courses[i].Name;
+                                        break;
+                                    case 13:
+                                        sch[1, 2] = courses[i].Name;
+                                        break;
+                                    case 14:
+                                        sch[1, 3] = courses[i].Name;
+                                        break;
+                                    case 16:
+                                        sch[1, 4] = courses[i].Name;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        case DayOfWeek.Monday:
+                            for (int k = 0; k < courses[i].Hour.Count; k++)
+                            {
+                                switch (courses[i].Hour[k])
+                                {
+                                    case 8:
+                                        sch[2, 0] = courses[i].Name;
+                                        break;
+                                    case 10:
+                                        sch[2, 1] = courses[i].Name;
+                                        break;
+                                    case 13:
+                                        sch[2, 2] = courses[i].Name;
+                                        break;
+                                    case 14:
+                                        sch[2, 3] = courses[i].Name;
+                                        break;
+                                    case 16:
+                                        sch[2, 4] = courses[i].Name;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        case DayOfWeek.Tuesday:
+                            for (int k = 0; k < courses[i].Hour.Count; k++)
+                            {
+                                switch (courses[i].Hour[k])
+                                {
+                                    case 8:
+                                        sch[3, 0] = courses[i].Name;
+                                        break;
+                                    case 10:
+                                        sch[3, 1] = courses[i].Name;
+                                        break;
+                                    case 13:
+                                        sch[3, 2] = courses[i].Name;
+                                        break;
+                                    case 14:
+                                        sch[3, 3] = courses[i].Name;
+                                        break;
+                                    case 16:
+                                        sch[3, 4] = courses[i].Name;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        case DayOfWeek.Wednesday:
+                            for (int k = 0; k < courses[i].Hour.Count; k++)
+                            {
+                                switch (courses[i].Hour[k])
+                                {
+                                    case 8:
+                                        sch[4, 0] = courses[i].Name;
+                                        break;
+                                    case 10:
+                                        sch[4, 1] = courses[i].Name;
+                                        break;
+                                    case 13:
+                                        sch[4, 2] = courses[i].Name;
+                                        break;
+                                    case 14:
+                                        sch[4, 3] = courses[i].Name;
+                                        break;
+                                    case 16:
+                                        sch[4, 4] = courses[i].Name;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        case DayOfWeek.Thursday:
+                            for (int k = 0; k < courses[i].Hour.Count; k++)
+                            {
+                                switch (courses[i].Hour[k])
+                                {
+                                    case 8:
+                                        sch[5, 0] = courses[i].Name;
+                                        break;
+                                    case 10:
+                                        sch[5, 1] = courses[i].Name;
+                                        break;
+                                    case 13:
+                                        sch[5, 2] = courses[i].Name;
+                                        break;
+                                    case 14:
+                                        sch[5, 3] = courses[i].Name;
+                                        break;
+                                    case 16:
+                                        sch[5, 4] = courses[i].Name;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        case DayOfWeek.Friday:
+                            for (int k = 0; k < courses[i].Hour.Count; k++)
+                            {
+                                switch (courses[i].Hour[k])
+                                {
+                                    case 8:
+                                        sch[6, 0] = courses[i].Name;
+                                        break;
+                                    case 10:
+                                        sch[6, 1] = courses[i].Name;
+                                        break;
+                                    case 13:
+                                        sch[6, 2] = courses[i].Name;
+                                        break;
+                                    case 14:
+                                        sch[6, 3] = courses[i].Name;
+                                        break;
+                                    case 16:
+                                        sch[6, 4] = courses[i].Name;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             return sch;

@@ -17,7 +17,7 @@ namespace Hogwarts
             List<Human> HumanList = new List<Human>();
             List<Student> StudentList = new List<Student>();
             List<Teacher> TeacherList = new List<Teacher>();
-
+            List<Course> CourseList = new List<Course>();
             //***** Reading File
             using (StreamReader file = new StreamReader("file.tsv"))
             {
@@ -347,11 +347,122 @@ namespace Hogwarts
                                         Message.Loading(2);
                                         Message.Program();
                                         Message.Welcome(TeacherList[index].FirstName + " " + TeacherList[index].LastName);
-
-                                        //Message.TeacherMenu();
+                                        TeacherList[index].SimultaneousTeaching = TeacherList[index].Random();
+                                        Message.TeacherMenu();
                                         string input2 = Console.ReadLine();
                                         switch (input2)
                                         {
+                                            case "L":
+                                                Message.Program();
+                                                Message.Lessons();
+                                                string input4 = Console.ReadLine();
+                                                switch (input4)
+                                                {
+                                                    case "a":
+                                                        Botanical bt = new Botanical();
+                                                        bt.Teacher = TeacherList[index];
+                                                        Message.Program();
+                                                        Console.Write("Enter Your Course Topic:");
+                                                        bt.Name = Console.ReadLine();
+                                                        Console.Write("Term:");
+                                                        bt.Term = int.Parse(Console.ReadLine());
+                                                        Console.Write("Capacity:");
+                                                        bt.Capacity = int.Parse(Console.ReadLine());
+                                                        string Day;
+                                                        do
+                                                        {
+                                                            Message.Program();
+                                                            Message.WeekDays();
+                                                            Day = Console.ReadLine();
+                                                            Message.Program();
+                                                            Message.Hours();
+                                                            string Hour = Console.ReadLine();
+                                                            dumbledore.ChooseDay(Day, bt, Hour);
+                                                        } while (Day != "Q");
+                                                        break;
+                                                    case "b":
+                                                        Message.Program();
+                                                        Chemistry ch = new Chemistry();
+                                                        ch.Teacher = TeacherList[index];
+                                                        Console.Write("Enter Your Course Topic:");
+                                                        ch.Name = Console.ReadLine();
+                                                        Console.Write("Term:");
+                                                        ch.Term = int.Parse(Console.ReadLine());
+                                                        Console.Write("Capacity:");
+                                                        ch.Capacity = int.Parse(Console.ReadLine());
+                                                        do
+                                                        {
+                                                            Message.Program();
+                                                            Message.WeekDays();
+                                                            Day = Console.ReadLine();
+                                                            Message.Program();
+                                                            Message.Hours();
+                                                            string Hour = Console.ReadLine();
+                                                            dumbledore.ChooseDay(Day, ch, Hour);
+                                                        } while (Day != "Q");
+                                                        break;
+                                                    case "c":
+                                                        Message.Program();
+                                                        Magic mg = new Magic();
+                                                        mg.Teacher = TeacherList[index];
+                                                        Console.Write("Enter Your Course Topic:");
+                                                        mg.Name = Console.ReadLine();
+                                                        Console.Write("Term:");
+                                                        mg.Term = int.Parse(Console.ReadLine());
+                                                        Console.Write("Capacity:");
+                                                        mg.Capacity = int.Parse(Console.ReadLine());
+                                                        do
+                                                        {
+                                                            Message.Program();
+                                                            Message.WeekDays();
+                                                            Day = Console.ReadLine();
+                                                            Message.Program();
+                                                            Message.Hours();
+                                                            string Hour = Console.ReadLine();
+                                                            dumbledore.ChooseDay(Day, mg, Hour);
+                                                        } while (Day != "Q");
+                                                        break;
+                                                    case "d":
+                                                        Message.Program();
+                                                        Sport sp = new Sport();
+                                                        sp.Teacher = TeacherList[index];
+                                                        Console.Write("Enter Your Course Topic:");
+                                                        sp.Name = Console.ReadLine();
+                                                        Console.Write("Term:");
+                                                        sp.Term = int.Parse(Console.ReadLine());
+                                                        Console.Write("Capacity:");
+                                                        sp.Capacity = int.Parse(Console.ReadLine());
+                                                        do
+                                                        {
+                                                            Message.Program();
+                                                            Message.WeekDays();
+                                                            Day = Console.ReadLine();
+                                                            Message.Program();
+                                                            Message.Hours();
+                                                            string Hour = Console.ReadLine();
+                                                            dumbledore.ChooseDay(Day, sp, Hour);
+                                                        } while (Day != "Q");
+                                                        break;
+                                                    default:
+                                                        Message.Default(3);
+                                                        break;
+                                                }
+                                                break;
+                                            case "T":
+
+                                                break;
+                                            case "S":
+
+                                                break;
+                                            case "b":
+                                                TeacherMenu2 = false;
+                                                break;
+                                            case "E":
+                                                System.Environment.Exit(0);
+                                                break;
+                                            default:
+                                                Message.Default(3);
+                                                break;
 
                                         }
                                     }

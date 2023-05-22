@@ -153,6 +153,67 @@ namespace Hogwarts
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Notify the Student by Sending Message.");
         }
+        public void ChooseHour(string hour, Course cr)
+        {
+            switch (hour)
+            {
+                case "a":
+                    cr.Hour.Add(8);
+                    break;
+                case "b":
+                    cr.Hour.Add(10);
+                    break;
+                case "c":
+                    cr.Hour.Add(13);
+                    break;
+                case "d":
+                    cr.Hour.Add(14);
+                    break;
+                case "e":
+                    cr.Hour.Add(16);
+                    break;
+                default:
+                    Message.Default(3);
+                    break;
+            }
+        }
+        public void ChooseDay(string day, Course bt, string Hour)
+        {
+            switch (day)
+            {
+                case "a":
+                    bt.DayOfWeek.Add(DayOfWeek.Saturday);
+                    ChooseHour(Hour, bt);
+                    break;
+                case "b":
+                    bt.DayOfWeek.Add(DayOfWeek.Sunday);
+                    ChooseHour(Hour, bt);
+                    break;
+                case "c":
+                    bt.DayOfWeek.Add(DayOfWeek.Monday);
+                    ChooseHour(Hour, bt);
+                    break;
+                case "d":
+                    bt.DayOfWeek.Add(DayOfWeek.Tuesday);
+                    ChooseHour(Hour, bt);
+                    break;
+                case "e":
+                    bt.DayOfWeek.Add(DayOfWeek.Wednesday);
+                    ChooseHour(Hour, bt);
+                    break;
+                case "f":
+                    bt.DayOfWeek.Add(DayOfWeek.Thursday);
+                    ChooseHour(Hour, bt);
+                    break;
+                case "g":
+                    bt.DayOfWeek.Add(DayOfWeek.Friday);
+                    ChooseHour(Hour, bt);
+                    break;
+                default:
+                    Message.Default(3);
+                    break;
+            }
+        }
     }
 }
 
