@@ -1,28 +1,32 @@
 ﻿<Properties StartupConfiguration="{B328F39A-DD6A-4676-A36A-FFDE6E3A2735}|Default">
-  <MonoDevelop.Ide.ItemProperties.Hogwarts PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Hogwarts PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
-      <File FileName="Program.cs" Line="580" Column="42" />
-      <File FileName="Message.cs" Line="179" Column="40" />
-      <File FileName="Existance/Dumbledore.cs" Line="180" Column="21" />
-      <File FileName="Existance/Student.cs" Line="1" Column="1" />
-      <File FileName="Existance/Teacher.cs" Line="8" Column="1" />
-      <File FileName="Existance/Human.cs" />
-      <File FileName="Lessons/Botanical.cs" />
-      <File FileName="Lessons/Course.cs" Line="21" Column="26" />
-      <File FileName="Existance/AllowedPerson.cs" Line="30" Column="56" />
+      <File FileName="Program.cs" Line="586" Column="80" />
+      <File FileName="Message.cs" Line="190" Column="1" />
+      <File FileName="Existance/Dumbledore.cs" Line="217" Column="49" />
+      <File FileName="Existance/Student.cs" Line="31" Column="1" />
+      <File FileName="Existance/Teacher.cs" Line="13" Column="58" />
+      <File FileName="Lessons/Course.cs" Line="28" Column="1" />
+      <File FileName="Lessons/Botanical.cs" Line="16" Column="26" />
+      <File FileName="Lessons/Plant.cs" Line="1" Column="1" />
+      <File FileName="Lessons/Chemistry.cs" Line="1" Column="1" />
+      <File FileName="Lessons/Sport.cs" Line="1" Column="1" />
+      <File FileName="Lessons/Magic.cs" Line="1" Column="1" />
+      <File FileName="Dorm.cs" Line="37" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Hogwarts" expanded="True">
             <Node name="Hogwarts" expanded="True">
+              <Node name="Enums" expanded="True" />
               <Node name="Existance" expanded="True" />
               <Node name="Lessons" expanded="True" />
               <Node name="Program.cs" selected="True" />

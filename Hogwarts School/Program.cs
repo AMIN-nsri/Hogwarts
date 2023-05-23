@@ -14,10 +14,16 @@ namespace Hogwarts
         {
             //***** Singletone Admin Pattern
             Dumbledore dumbledore = new Dumbledore();
+            //***** Give Instances
             List<Human> HumanList = new List<Human>();
             List<Student> StudentList = new List<Student>();
             List<Teacher> TeacherList = new List<Teacher>();
             List<Course> CourseList = new List<Course>();
+            List<Botanical> BotanicalList = new List<Botanical>();
+            List<Chemistry> ChemistryList = new List<Chemistry>();
+            List<Magic> MagicList = new List<Magic>();
+            List<Sport> SportList = new List<Sport>();
+
             //***** Reading File
             using (StreamReader file = new StreamReader("file.tsv"))
             {
@@ -86,8 +92,8 @@ namespace Hogwarts
             Message.Program();
             Message.MainMenu();
             String input = Console.ReadLine();
-
-            while(input != "E")
+            DateTime FirstRunTime = DateTime.Now;
+            while (input != "E")
             {
                 switch (input)
                 {
@@ -251,7 +257,6 @@ namespace Hogwarts
                                                     Message.Default(3);
                                                     break;
                                             }
-
                                         }
                                         break;
                                     // Inviting
@@ -374,11 +379,15 @@ namespace Hogwarts
                                                             Message.Program();
                                                             Message.WeekDays();
                                                             Day = Console.ReadLine();
+                                                            if (Day == "Q") break;
                                                             Message.Program();
                                                             Message.Hours();
                                                             string Hour = Console.ReadLine();
                                                             dumbledore.ChooseDay(Day, bt, Hour);
                                                         } while (Day != "Q");
+                                                        CourseList.Add(bt);
+                                                        BotanicalList.Add(bt);
+                                                        TeacherList[index].Courses.Add(bt);
                                                         break;
                                                     case "b":
                                                         Message.Program();
@@ -395,11 +404,15 @@ namespace Hogwarts
                                                             Message.Program();
                                                             Message.WeekDays();
                                                             Day = Console.ReadLine();
+                                                            if (Day == "Q") break;
                                                             Message.Program();
                                                             Message.Hours();
                                                             string Hour = Console.ReadLine();
                                                             dumbledore.ChooseDay(Day, ch, Hour);
                                                         } while (Day != "Q");
+                                                        CourseList.Add(ch);
+                                                        ChemistryList.Add(ch);
+                                                        TeacherList[index].Courses.Add(ch);
                                                         break;
                                                     case "c":
                                                         Message.Program();
@@ -416,11 +429,15 @@ namespace Hogwarts
                                                             Message.Program();
                                                             Message.WeekDays();
                                                             Day = Console.ReadLine();
+                                                            if (Day == "Q") break;
                                                             Message.Program();
                                                             Message.Hours();
                                                             string Hour = Console.ReadLine();
                                                             dumbledore.ChooseDay(Day, mg, Hour);
                                                         } while (Day != "Q");
+                                                        CourseList.Add(mg);
+                                                        MagicList.Add(mg);
+                                                        TeacherList[index].Courses.Add(mg);
                                                         break;
                                                     case "d":
                                                         Message.Program();
@@ -437,11 +454,15 @@ namespace Hogwarts
                                                             Message.Program();
                                                             Message.WeekDays();
                                                             Day = Console.ReadLine();
+                                                            if (Day == "Q") break;
                                                             Message.Program();
                                                             Message.Hours();
                                                             string Hour = Console.ReadLine();
                                                             dumbledore.ChooseDay(Day, sp, Hour);
                                                         } while (Day != "Q");
+                                                        CourseList.Add(sp);
+                                                        SportList.Add(sp);
+                                                        TeacherList[index].Courses.Add(sp);
                                                         break;
                                                     default:
                                                         Message.Default(3);
@@ -452,7 +473,37 @@ namespace Hogwarts
 
                                                 break;
                                             case "S":
-
+                                                //Console.WriteLine("Enter Student ID:");
+                                                //string StID = Console.ReadLine();
+                                                //int STindex = dumbledore.SearchSTByID(StID, StudentList);
+                                                //if (STindex < 0) Console.WriteLine("User Not Found!");
+                                                //else if(STindex>=0)
+                                                //{
+                                                //    int CourseSearch = dumbledore.CourseComparison(StudentList[STindex], TeacherList[index]);
+                                                //    if (CourseSearch>=0)
+                                                //    {
+                                                //        Console.WriteLine($"Entering {StudentList[STindex].FirstName} {StudentList[STindex].LastName}'s {StudentList[STindex].Courses[CourseSearch].Name} SCORE:");
+                                                //        int score = int.Parse(Console.ReadLine());
+                                                //        StudentList[STindex].Courses[CourseSearch].Score = score;
+                                                //    }
+                                                //    else Console.WriteLine("You Don't Have Any");
+                                                //}
+                                                Console.WriteLine("Choose Lesson by index:");
+                                                for (int i = 0; i < TeacherList[index].Courses.Count; i++)
+                                                {
+                                                    Console.WriteLine($"{i + 1}- {TeacherList[index].Courses[i].Name}");
+                                                    int LessonIndex = int.Parse(Console.ReadLine());
+                                                    LessonIndex--;
+                                                    bool ShowStudents = true;
+                                                    while(ShowStudents)
+                                                    {
+                                                        Console.WriteLine("Choose Student by index:");
+                                                        for(int j=0;j< TeacherList[index].Courses[LessonIndex].Students.Count;j++)
+                                                        {
+                                                            Console.WriteLine($"{j+1}- {TeacherList[index].Courses[LessonIndex].Students[j]}");
+                                                        }
+                                                    }
+                                                }
                                                 break;
                                             case "b":
                                                 TeacherMenu2 = false;
@@ -570,6 +621,7 @@ namespace Hogwarts
                                     {
                                         Message.Program();
                                         Message.Welcome(StudentList[index].FirstName + " " + StudentList[index].LastName);
+                                        if () dumbledore.ShowDorm(StudentList[index]);
                                         if (StudentList[index].NewSTMessage)
                                         {
                                             Message.NewMessage();
@@ -595,7 +647,13 @@ namespace Hogwarts
                                             case "T":
                                                 Message.Program();
                                                 StudentList[index].Train(StudentList[index]);
-                                                Console.WriteLine("Press any key to turn back");
+                                                if (StudentList[index].NewTerm)
+                                                {
+                                                    dumbledore.ShowDorm(StudentList[index]);
+                                                    StudentList[index].NewTerm = false;
+                                                }
+                                                else Console.WriteLine($"Your Dorm Number is: {StudentList[index].DormNumber}");
+                                                Console.WriteLine("Press any key to turn back.");
                                                 Console.ReadKey();
                                                 break;
                                             case "I":
@@ -660,6 +718,36 @@ namespace Hogwarts
                                                     }
                                                 }
                                                 break;
+                                            case "U":
+                                                Message.Program();
+                                                bool SelectUnit = true;
+                                                while (SelectUnit)
+                                                {
+                                                    Console.WriteLine("Select One by index:");
+                                                    Console.WriteLine($"{"",-2}- {"Course Name",-15} {"Capacity",-9} Time");
+                                                    for(int i =0; i<CourseList.Count;i++)
+                                                    {
+                                                            Console.Write($"{i + 1,-2}- {CourseList[i].Name,-15} {CourseList[i].Registered+"/"+CourseList[i].Capacity,-9} ");
+                                                            for(int j=0; j<CourseList[i].DayOfWeek.Count;j++)
+                                                            {
+                                                                Console.Write($"({CourseList[i].DayOfWeek[j] +" "+CourseList[i].Hour[j]})");
+                                                            }
+                                                            Console.WriteLine();
+                                                    }
+                                                    string input10 = Console.ReadLine();
+                                                    if (input10 == "b") break;
+                                                    int CourseIndex = int.Parse(input10);
+                                                    if (CourseList[CourseIndex].Term != StudentList[index].Term) Console.WriteLine("Your Term Doesn't Match!");
+                                                    else if (dumbledore.CourseInterrupt(StudentList[index], CourseList[CourseIndex])) Console.WriteLine("Time Interrupts!");
+                                                    else if (CourseList[CourseIndex].Registered >= CourseList[CourseIndex].Capacity) Console.WriteLine("Course Capacity is Full!");
+                                                    else
+                                                    {
+                                                        CourseList[CourseIndex].Registered++;
+                                                        StudentList[index].Courses.Add(CourseList[CourseIndex]);
+                                                        CourseList[CourseIndex].Students.Add(StudentList[index]);
+                                                    }
+                                                }
+                                                break;
                                             case "b":
                                                 StudentMenu2 = false;
                                                 break;
@@ -683,6 +771,16 @@ namespace Hogwarts
                 Message.Program();
                 Message.MainMenu();
                 input = Console.ReadLine();
+                if ((DateTime.Now.Year - FirstRunTime.Year)>1)
+                {
+                    for(int i =0; i<StudentList.Count;i++)
+                    {
+                        StudentList[i].Term++;
+                        StudentList[i].NewTerm = true;
+                    }
+                    Dorm.EmptyDorm();
+                    FirstRunTime = DateTime.Now;
+                }
             }
         }
 

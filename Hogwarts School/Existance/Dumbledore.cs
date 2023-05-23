@@ -214,6 +214,84 @@ namespace Hogwarts
                     break;
             }
         }
+    
+        public void ShowDorm(Student st)
+        {
+            switch (st.Gender)
+            {
+                case EGender.Male:
+                    switch (st.Group.Type)
+                    {
+                        case EGroupType.Gryffindor:
+                            st.DormNumber = Dorm.makeGryfDormCode();
+                            break;
+                        case EGroupType.Hufflepuff:
+                            st.DormNumber = Dorm.makeHuffDormCode();
+                            break;
+                        case EGroupType.Ravenclaw:
+                            st.DormNumber = Dorm.makeRavenDormCode();
+                            break;
+                        case EGroupType.Slytherin:
+                            st.DormNumber = Dorm.makeSlyDormCode();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case EGender.Female:
+                    switch (st.Group.Type)
+                    {
+                        case EGroupType.Gryffindor:
+                            st.DormNumber = Dorm.makeGryfDormCode();
+                            break;
+                        case EGroupType.Hufflepuff:
+                            st.DormNumber = Dorm.makeHuffDormCode();
+                            break;
+                        case EGroupType.Ravenclaw:
+                            st.DormNumber = Dorm.makeRavenDormCode();
+                            break;
+                        case EGroupType.Slytherin:
+                            st.DormNumber = Dorm.makeSlyDormCode();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                    break;
+                default:
+                    break;
+            }
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine($"Your Dorm Number is: {st.DormNumber}");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        public int CourseComparison(Student st,Teacher teacher)
+        {
+            for(int i =0; i<st.Courses.Count;i++)
+            {
+                if (st.Courses[i].Teacher == teacher)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public bool CourseInterrupt(Student st, Course cr)
+        {
+            for(int i=0; i<st.Courses.Count;i++)
+            {
+                for(int j=0;j< st.Courses[i].DayOfWeek.Count;j++)
+                {
+                    for (int k = 0; k < cr.DayOfWeek.Count; k++)
+                    {
+                        if ((st.Courses[i].DayOfWeek[j] == cr.DayOfWeek[k]) && (st.Courses[i].Hour[j] == cr.Hour[k])) return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 }
 

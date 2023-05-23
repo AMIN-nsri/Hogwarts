@@ -23,6 +23,8 @@ namespace Hogwarts
         public int Capacity { get; set; }
         public int Term { get; set; }
         public Teacher Teacher { get; set; } = new Teacher();
+        public List<Student> Students { get; set; } = new List<Student>();
+        public int Score { get; set; }
 
     }
 }

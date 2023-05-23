@@ -10,10 +10,11 @@ namespace Hogwarts
 		{
 		}
 
-        public List<string> Term1 = new List<string>();
-        public List<string> Term2 = new List<string>();
-        public List<string> Term3 = new List<string>();
-        public List<string> Term4 = new List<string>();
+        public List<Plant> Term1 = new List<Plant>();
+        public List<Plant> Term2 = new List<Plant>();
+        public List<Plant> Term3 = new List<Plant>();
+        public List<Plant> Term4 = new List<Plant>();
+
 
     }
 }

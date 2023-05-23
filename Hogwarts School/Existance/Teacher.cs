@@ -10,8 +10,8 @@ namespace Hogwarts
 		public Teacher(Human human) : base(human)
         {
 		}
-
-		public bool SimultaneousTeaching { get; set; }
+        public List<Course> Courses = new List<Course>();
+        public bool SimultaneousTeaching { get; set; }
 		public bool Random()
 		{
 			Random random = new Random();
@@ -19,6 +19,7 @@ namespace Hogwarts
 			if (z == 0) return true;
 			else return false;
 		}
+
     }
 }
 

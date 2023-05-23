@@ -23,12 +23,12 @@ namespace Hogwarts
 
         public int PassedUnit { get; set; } = 0;
 		public int Term { get; set; } = 1;
-		public int DormNumber { get; set; } //Khabgah
+		public string DormNumber { get; set; } 
 		public bool NewSTMessage { get; set; }
         public List<Course> Courses = new List<Course>();
         public DateTime Ticket { get; set; }
         public bool Registered { get; set; }
-
+        public bool NewTerm { get; set; } = true;
         List<SMessage> STMessage = new List<SMessage>();
         public bool NewDumbMessage;
         public void SendMessageToST(string message, Student st)
