@@ -413,6 +413,7 @@ namespace Hogwarts
                                                         }
                                                         else if (dumbledore.CourseDuplicateTime(bt,Day,Hour)) Console.WriteLine("You've Already Choosen this time!");
                                                         else dumbledore.ChooseDay(Day, bt, Hour);
+                                                        Console.ReadKey();
                                                     } while (Day != "Q");
                                                     CourseList.Add(bt);
                                                     //BotanicalList.Add(bt);
@@ -448,6 +449,7 @@ namespace Hogwarts
                                                         }
                                                         else if (dumbledore.CourseDuplicateTime(ch, Day, Hour)) Console.WriteLine("You've Already Choosen this time!");
                                                         else dumbledore.ChooseDay(Day, ch, Hour);
+                                                        Console.ReadKey();
                                                     } while (Day != "Q");
                                                     CourseList.Add(ch);
                                                     //ChemistryList.Add(ch);
@@ -483,6 +485,7 @@ namespace Hogwarts
                                                         }
                                                         else if (dumbledore.CourseDuplicateTime(mg, Day, Hour)) Console.WriteLine("You've Already Choosen this time!");
                                                         else dumbledore.ChooseDay(Day, mg, Hour);
+                                                        Console.ReadKey();
                                                     } while (Day != "Q");
                                                     CourseList.Add(mg);
                                                     //MagicList.Add(mg);
@@ -518,6 +521,7 @@ namespace Hogwarts
                                                         }
                                                         else if (dumbledore.CourseDuplicateTime(sp, Day, Hour)) Console.WriteLine("You've Already Choosen this time!");
                                                         else dumbledore.ChooseDay(Day, sp, Hour);
+                                                        Console.ReadKey();
                                                     } while (Day != "Q");
                                                     CourseList.Add(sp);
                                                     //SportList.Add(sp);
@@ -731,6 +735,11 @@ namespace Hogwarts
                                                 bool InJungle = true;
                                                 while (InJungle)
                                                 {
+                                                    if ((DateTime.Now.Month - FirstRunTime2.Month) > 1)
+                                                    {
+                                                        BotanicalInstance.Grow();
+                                                        FirstRunTime2 = DateTime.Now;
+                                                    }
                                                     Console.Clear();
                                                     Message.Time();
                                                     Message.Topic();
@@ -743,16 +752,56 @@ namespace Hogwarts
                                                         switch (StudentList[index].Term)
                                                         {
                                                             case 1:
-                                                                BotanicalInstance.Term1[PlantIndex].Count--;
+                                                                if (BotanicalInstance.Term1[PlantIndex].Count > 0)
+                                                                {
+                                                                    BotanicalInstance.Term1[PlantIndex].Count--;
+                                                                    Console.WriteLine("Collected!");
+                                                                    Thread.Sleep(500);
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("Wait to Grow!");
+                                                                    Thread.Sleep(500);
+                                                                }
                                                                 break;
                                                             case 2:
-                                                                BotanicalInstance.Term2[PlantIndex].Count--;
+                                                                if (BotanicalInstance.Term2[PlantIndex].Count > 0)
+                                                                {
+                                                                    BotanicalInstance.Term2[PlantIndex].Count--;
+                                                                    Console.WriteLine("Collected!");
+                                                                    Thread.Sleep(500);
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("Wait to Grow!");
+                                                                    Thread.Sleep(500);
+                                                                }
                                                                 break;
                                                             case 3:
-                                                                BotanicalInstance.Term3[PlantIndex].Count--;
+                                                                if (BotanicalInstance.Term3[PlantIndex].Count > 0)
+                                                                {
+                                                                    BotanicalInstance.Term3[PlantIndex].Count--;
+                                                                    Console.WriteLine("Collected!");
+                                                                    Thread.Sleep(500);
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("Wait to Grow!");
+                                                                    Thread.Sleep(500);
+                                                                }
                                                                 break;
                                                             case 4:
-                                                                BotanicalInstance.Term4[PlantIndex].Count--;
+                                                                if (BotanicalInstance.Term4[PlantIndex].Count > 0)
+                                                                {
+                                                                    BotanicalInstance.Term4[PlantIndex].Count--;
+                                                                    Console.WriteLine("Collected!");
+                                                                    Thread.Sleep(500);
+                                                                }
+                                                                else
+                                                                {
+                                                                    Console.WriteLine("Wait to Grow!");
+                                                                    Thread.Sleep(500);
+                                                                }
                                                                 break;
                                                             default:
                                                                 break;
@@ -910,12 +959,8 @@ namespace Hogwarts
                         StudentList[i].NewTerm = true;
                     }
                     Dorm.EmptyDorm();
-                    FirstRunTime = DateTime.Now;
-                }
-                if ((DateTime.Now.Month - FirstRunTime2.Month) > 2)
-                {
                     BotanicalInstance.DefaultPlant();
-                    FirstRunTime2 = DateTime.Now;
+                    FirstRunTime = DateTime.Now;
                 }
             }
         }

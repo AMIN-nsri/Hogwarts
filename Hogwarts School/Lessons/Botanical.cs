@@ -101,6 +101,16 @@ namespace Hogwarts
             pl20.Count = 27;
             Term4.Add(pl20);
         }
+        public void Grow()
+        {
+            for(int i =0;i<5;i++)
+            {
+                Term1[i].Count++;
+                Term2[i].Count++;
+                Term3[i].Count++;
+                Term4[i].Count++;
+            }
+        }
     }
 }
 

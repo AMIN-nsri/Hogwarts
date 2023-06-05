@@ -111,15 +111,19 @@ namespace Hogwarts
         }
         public void Inbox_All()
         {
-            for (int i = 0; i < DumbMessage.Count; i++)
+            if (DumbMessage.Count > 0)
             {
-                Console.Write($"{(i + 1) + "-",-3} ");
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.Write($"{DumbMessage[i].Sender + ": ",-10}");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write($"{DumbMessage[i].message}");
-                Console.WriteLine();
+                for (int i = 0; i < DumbMessage.Count; i++)
+                {
+                    Console.Write($"{(i + 1) + "-",-3} ");
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.Write($"{DumbMessage[i].Sender + ": ",-10}");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write($"{DumbMessage[i].message}");
+                    Console.WriteLine();
+                }
             }
+            else Console.WriteLine("Empty!");
         }
         public void Invite(Human human,Student st)
         {
@@ -159,18 +163,23 @@ namespace Hogwarts
             {
                 case "a":
                     cr.Hour.Add(8);
+                    Console.WriteLine("Added Successfully!");
                     break;
                 case "b":
                     cr.Hour.Add(10);
+                    Console.WriteLine("Added Successfully!");
                     break;
                 case "c":
                     cr.Hour.Add(13);
+                    Console.WriteLine("Added Successfully!");
                     break;
                 case "d":
                     cr.Hour.Add(14);
+                    Console.WriteLine("Added Successfully!");
                     break;
                 case "e":
                     cr.Hour.Add(16);
+                    Console.WriteLine("Added Successfully!");
                     break;
                 default:
                     Message.Default(3);

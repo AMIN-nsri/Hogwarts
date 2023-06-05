@@ -140,14 +140,18 @@ namespace Hogwarts
         }
         public void Inbox_All()
         {
-            for (int i = 0; i < STMessage.Count; i++)
+            if (STMessage.Count > 0)
             {
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
-                Console.Write($"{(i + 1) + "-",-3} ");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write($"{STMessage[i].message}");
-                Console.WriteLine();
+                for (int i = 0; i < STMessage.Count; i++)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.Write($"{(i + 1) + "-",-3} ");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Write($"{STMessage[i].message}");
+                    Console.WriteLine();
+                }
             }
+            else Console.WriteLine("Empty!");
         }
         public void Train(Student st)
         {
@@ -166,8 +170,6 @@ namespace Hogwarts
                 Console.WriteLine("Wait for Next Train in 1 hour.");
                 st.Ticket = st.Ticket.AddHours(1);
             }
-
-            //return 0;
         }
         public void ShowExercise()
         {
@@ -229,7 +231,7 @@ namespace Hogwarts
             Console.ForegroundColor = ConsoleColor.Green;
             WriteAt("|\\\\|///|", 5, 3);
             WriteAt($" ------({plant.Count})", 5, 4);
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             WriteAt($"1.{plant.Name,-7}", 3, 5);
             Console.ForegroundColor = ConsoleColor.White;
         }
@@ -238,7 +240,7 @@ namespace Hogwarts
             Console.ForegroundColor = ConsoleColor.Green;
             WriteAt("|\\\\|///|", 21, 4);
             WriteAt($" ------({plant.Count})", 21, 5);
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             WriteAt($"2.{plant.Name,-7}", 19, 6);
             Console.ForegroundColor = ConsoleColor.White;
         }
@@ -247,7 +249,7 @@ namespace Hogwarts
             Console.ForegroundColor = ConsoleColor.Green;
             WriteAt("|\\\\|///|", 3, 7);
             WriteAt($" ------({plant.Count})", 3, 8);
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             WriteAt($"3.{plant.Name,-7}", 1, 9);
             Console.ForegroundColor = ConsoleColor.White;
         }
@@ -256,7 +258,7 @@ namespace Hogwarts
             Console.ForegroundColor = ConsoleColor.Green;
             WriteAt("|\\\\|///|", 17, 9);
             WriteAt($" ------({plant.Count})", 17, 10);
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             WriteAt($"4.{plant.Name,-7}", 15, 11);
             Console.ForegroundColor = ConsoleColor.White;
         }
@@ -265,7 +267,7 @@ namespace Hogwarts
             Console.ForegroundColor = ConsoleColor.Green;
             WriteAt("|\\\\|///|", 33, 8);
             WriteAt($" ------({plant.Count})", 33, 9);
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             WriteAt($"5.{plant.Name,-7}", 31, 10);
             Console.ForegroundColor = ConsoleColor.White;
         }
