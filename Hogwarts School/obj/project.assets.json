@@ -26,7 +26,8 @@
         "net7.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://www.nuget.org/": {}
       },
       "frameworks": {
         "net7.0": {

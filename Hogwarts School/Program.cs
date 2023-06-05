@@ -19,10 +19,12 @@ namespace Hogwarts
             List<Student> StudentList = new List<Student>();
             List<Teacher> TeacherList = new List<Teacher>();
             List<Course> CourseList = new List<Course>();
-            List<Botanical> BotanicalList = new List<Botanical>();
-            List<Chemistry> ChemistryList = new List<Chemistry>();
-            List<Magic> MagicList = new List<Magic>();
-            List<Sport> SportList = new List<Sport>();
+            //List<Botanical> BotanicalList = new List<Botanical>();
+            Botanical BotanicalInstance = new Botanical();
+            BotanicalInstance.DefaultPlant();
+            //List<Chemistry> ChemistryList = new List<Chemistry>();
+            //List<Magic> MagicList = new List<Magic>();
+            //List<Sport> SportList = new List<Sport>();
 
             //***** Reading File
             using (StreamReader file = new StreamReader("file.tsv"))
@@ -93,6 +95,7 @@ namespace Hogwarts
             Message.MainMenu();
             String input = Console.ReadLine();
             DateTime FirstRunTime = DateTime.Now;
+            DateTime FirstRunTime2 = DateTime.Now;
             while (input != "E")
             {
                 switch (input)
@@ -291,231 +294,328 @@ namespace Hogwarts
                     // ***Teacher Menu
                     case "T":
                         Message.Program();
-                        bool TeacherMenu = true;
-                        while(TeacherMenu)
+                        //bool TeacherMenu = true;
+                        //while(TeacherMenu)
+                        //{
+                        if (FirstLogin)
                         {
-                            if (FirstLogin)
+                            Message.FirstLogin();
+                            Thread.Sleep(2000);
+                            Message.Loading(1);
+                            break;
+                        }
+                        else
+                        {
+                            //Login check
+                            Message.Program();
+                            Console.WriteLine("Enter your Username and Password below");
+                            Console.Write("User Name: ");
+                            input = Console.ReadLine();
+                            string username3 = input;
+                            Console.Write("Password: ");
+                            input = GetPassword();
+                            string password3 = input;
+                            while (dumbledore.TELoginCheck(username3, password3, TeacherList) < 0)
                             {
-                                Message.FirstLogin();
-                                Thread.Sleep(2000);
-                                Message.Loading(1);
-                                break;
-                            }
-                            else
-                            {
-                                //Login check
                                 Message.Program();
+                                Message.Wrong();
                                 Console.WriteLine("Enter your Username and Password below");
                                 Console.Write("User Name: ");
                                 input = Console.ReadLine();
-                                string username3 = input;
+                                if (input == "b")
+                                {
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    break;
+                                }
+                                username3 = input;
                                 Console.Write("Password: ");
                                 input = GetPassword();
-                                string password3 = input;
-                                while (dumbledore.TELoginCheck(username3, password3, TeacherList) < 0)
+                                if (input == "b")
                                 {
-                                    Message.Program();
-                                    Message.Wrong();
-                                    Console.WriteLine("Enter your Username and Password below");
-                                    Console.Write("User Name: ");
-                                    input = Console.ReadLine();
-                                    if (input == "b")
-                                    {
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        break;
-                                    }
-                                    username3 = input;
-                                    Console.Write("Password: ");
-                                    input = GetPassword();
-                                    if (input == "b")
-                                    {
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        Wait.ClearLine();
-                                        break;
-                                    }
-                                    password3 = input;
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    Wait.ClearLine();
+                                    break;
                                 }
-                                int index = dumbledore.TELoginCheck(username3, password3, TeacherList);
-                                if (index >= 0)
+                                password3 = input;
+                            }
+                            int index = dumbledore.TELoginCheck(username3, password3, TeacherList);
+                            if (index >= 0)
+                            {
+                                Message.Program();
+                                Message.LogedIn();
+                                bool TeacherMenu2 = true;
+                                while (TeacherMenu2)
                                 {
+                                    Message.Loading(2);
                                     Message.Program();
-                                    Message.LogedIn();
-                                    bool TeacherMenu2 = true;
-                                    while (TeacherMenu2)
+                                    Message.Welcome(TeacherList[index].FirstName + " " + TeacherList[index].LastName);
+                                    TeacherList[index].SimultaneousTeaching = TeacherList[index].Random();
+                                    Message.TeacherMenu();
+                                    string input2 = Console.ReadLine();
+                                    switch (input2)
                                     {
-                                        Message.Loading(2);
-                                        Message.Program();
-                                        Message.Welcome(TeacherList[index].FirstName + " " + TeacherList[index].LastName);
-                                        TeacherList[index].SimultaneousTeaching = TeacherList[index].Random();
-                                        Message.TeacherMenu();
-                                        string input2 = Console.ReadLine();
-                                        switch (input2)
-                                        {
-                                            case "L":
-                                                Message.Program();
-                                                Message.Lessons();
-                                                string input4 = Console.ReadLine();
-                                                switch (input4)
-                                                {
-                                                    case "a":
-                                                        Botanical bt = new Botanical();
-                                                        bt.Teacher = TeacherList[index];
+                                        case "L":
+                                            Message.Program();
+                                            Message.Lessons();
+                                            string input4 = Console.ReadLine();
+                                            switch (input4)
+                                            {
+                                                case "a":
+                                                    Botanical bt = new Botanical();
+                                                    //bt.Teacher = TeacherList[index];
+                                                    Message.Program();
+                                                    Console.Write("Enter Your Course Topic:");
+                                                    bt.Name = Console.ReadLine();
+                                                    Console.Write("Term:");
+                                                    bt.Term = int.Parse(Console.ReadLine());
+                                                    switch (bt.Term)
+                                                    {
+                                                        case 1:
+                                                            bt.CourseType = CourseType.Bot1;
+                                                            break;
+                                                        case 2:
+                                                            bt.CourseType = CourseType.Bot2;
+                                                            break;
+                                                        case 3:
+                                                            bt.CourseType = CourseType.Bot3;
+                                                            break;
+                                                        case 4:
+                                                            bt.CourseType = CourseType.Bot4;
+                                                            break;
+                                                        default:
+                                                            break;
+                                                    }
+                                                    Console.Write("Capacity:");
+                                                    bt.Capacity = int.Parse(Console.ReadLine());
+                                                    string Day;
+                                                    do
+                                                    {
                                                         Message.Program();
-                                                        Console.Write("Enter Your Course Topic:");
-                                                        bt.Name = Console.ReadLine();
-                                                        Console.Write("Term:");
-                                                        bt.Term = int.Parse(Console.ReadLine());
-                                                        Console.Write("Capacity:");
-                                                        bt.Capacity = int.Parse(Console.ReadLine());
-                                                        string Day;
-                                                        do
-                                                        {
-                                                            Message.Program();
-                                                            Message.WeekDays();
-                                                            Day = Console.ReadLine();
-                                                            if (Day == "Q") break;
-                                                            Message.Program();
-                                                            Message.Hours();
-                                                            string Hour = Console.ReadLine();
-                                                            dumbledore.ChooseDay(Day, bt, Hour);
-                                                        } while (Day != "Q");
-                                                        CourseList.Add(bt);
-                                                        BotanicalList.Add(bt);
-                                                        TeacherList[index].Courses.Add(bt);
-                                                        break;
-                                                    case "b":
+                                                        Message.WeekDays();
+                                                        Day = Console.ReadLine();
+                                                        if (Day == "Q") break;
                                                         Message.Program();
-                                                        Chemistry ch = new Chemistry();
-                                                        ch.Teacher = TeacherList[index];
-                                                        Console.Write("Enter Your Course Topic:");
-                                                        ch.Name = Console.ReadLine();
-                                                        Console.Write("Term:");
-                                                        ch.Term = int.Parse(Console.ReadLine());
-                                                        Console.Write("Capacity:");
-                                                        ch.Capacity = int.Parse(Console.ReadLine());
-                                                        do
+                                                        Message.Hours();
+                                                        string Hour = Console.ReadLine();
+                                                        if (!TeacherList[index].SimultaneousTeaching)
                                                         {
-                                                            Message.Program();
-                                                            Message.WeekDays();
-                                                            Day = Console.ReadLine();
-                                                            if (Day == "Q") break;
-                                                            Message.Program();
-                                                            Message.Hours();
-                                                            string Hour = Console.ReadLine();
-                                                            dumbledore.ChooseDay(Day, ch, Hour);
-                                                        } while (Day != "Q");
-                                                        CourseList.Add(ch);
-                                                        ChemistryList.Add(ch);
-                                                        TeacherList[index].Courses.Add(ch);
-                                                        break;
-                                                    case "c":
+                                                            if(!dumbledore.CourseInterruptTE(TeacherList[index], bt))
+                                                            {
+                                                                dumbledore.ChooseDay(Day, bt, Hour);
+                                                            }
+                                                            else Console.WriteLine("You Can't Teach Simultaneously");
+                                                        }
+                                                        else if (dumbledore.CourseDuplicateTime(bt,Day,Hour)) Console.WriteLine("You've Already Choosen this time!");
+                                                        else dumbledore.ChooseDay(Day, bt, Hour);
+                                                    } while (Day != "Q");
+                                                    CourseList.Add(bt);
+                                                    //BotanicalList.Add(bt);
+                                                    TeacherList[index].Courses.Add(bt);
+                                                    break;
+                                                case "b":
+                                                    Message.Program();
+                                                    Chemistry ch = new Chemistry();
+                                                    ch.CourseType = CourseType.Ch;
+                                                    //ch.Teacher = TeacherList[index];
+                                                    Console.Write("Enter Your Course Topic:");
+                                                    ch.Name = Console.ReadLine();
+                                                    Console.Write("Term:");
+                                                    ch.Term = int.Parse(Console.ReadLine());
+                                                    Console.Write("Capacity:");
+                                                    ch.Capacity = int.Parse(Console.ReadLine());
+                                                    do
+                                                    {
                                                         Message.Program();
-                                                        Magic mg = new Magic();
-                                                        mg.Teacher = TeacherList[index];
-                                                        Console.Write("Enter Your Course Topic:");
-                                                        mg.Name = Console.ReadLine();
-                                                        Console.Write("Term:");
-                                                        mg.Term = int.Parse(Console.ReadLine());
-                                                        Console.Write("Capacity:");
-                                                        mg.Capacity = int.Parse(Console.ReadLine());
-                                                        do
-                                                        {
-                                                            Message.Program();
-                                                            Message.WeekDays();
-                                                            Day = Console.ReadLine();
-                                                            if (Day == "Q") break;
-                                                            Message.Program();
-                                                            Message.Hours();
-                                                            string Hour = Console.ReadLine();
-                                                            dumbledore.ChooseDay(Day, mg, Hour);
-                                                        } while (Day != "Q");
-                                                        CourseList.Add(mg);
-                                                        MagicList.Add(mg);
-                                                        TeacherList[index].Courses.Add(mg);
-                                                        break;
-                                                    case "d":
+                                                        Message.WeekDays();
+                                                        Day = Console.ReadLine();
+                                                        if (Day == "Q") break;
                                                         Message.Program();
-                                                        Sport sp = new Sport();
-                                                        sp.Teacher = TeacherList[index];
-                                                        Console.Write("Enter Your Course Topic:");
-                                                        sp.Name = Console.ReadLine();
-                                                        Console.Write("Term:");
-                                                        sp.Term = int.Parse(Console.ReadLine());
-                                                        Console.Write("Capacity:");
-                                                        sp.Capacity = int.Parse(Console.ReadLine());
-                                                        do
+                                                        Message.Hours();
+                                                        string Hour = Console.ReadLine();
+                                                        if (!TeacherList[index].SimultaneousTeaching)
                                                         {
-                                                            Message.Program();
-                                                            Message.WeekDays();
-                                                            Day = Console.ReadLine();
-                                                            if (Day == "Q") break;
-                                                            Message.Program();
-                                                            Message.Hours();
-                                                            string Hour = Console.ReadLine();
-                                                            dumbledore.ChooseDay(Day, sp, Hour);
-                                                        } while (Day != "Q");
-                                                        CourseList.Add(sp);
-                                                        SportList.Add(sp);
-                                                        TeacherList[index].Courses.Add(sp);
-                                                        break;
-                                                    default:
-                                                        Message.Default(3);
-                                                        break;
-                                                }
-                                                break;
-                                            case "T":
-
-                                                break;
-                                            case "S":
-                                                //Console.WriteLine("Enter Student ID:");
-                                                //string StID = Console.ReadLine();
-                                                //int STindex = dumbledore.SearchSTByID(StID, StudentList);
-                                                //if (STindex < 0) Console.WriteLine("User Not Found!");
-                                                //else if(STindex>=0)
-                                                //{
-                                                //    int CourseSearch = dumbledore.CourseComparison(StudentList[STindex], TeacherList[index]);
-                                                //    if (CourseSearch>=0)
-                                                //    {
-                                                //        Console.WriteLine($"Entering {StudentList[STindex].FirstName} {StudentList[STindex].LastName}'s {StudentList[STindex].Courses[CourseSearch].Name} SCORE:");
-                                                //        int score = int.Parse(Console.ReadLine());
-                                                //        StudentList[STindex].Courses[CourseSearch].Score = score;
-                                                //    }
-                                                //    else Console.WriteLine("You Don't Have Any");
-                                                //}
-                                                Console.WriteLine("Choose Lesson by index:");
+                                                            if (!dumbledore.CourseInterruptTE(TeacherList[index], ch))
+                                                            {
+                                                                dumbledore.ChooseDay(Day, ch, Hour);
+                                                            }
+                                                            else Console.WriteLine("You Can't Teach Simultaneously");
+                                                        }
+                                                        else if (dumbledore.CourseDuplicateTime(ch, Day, Hour)) Console.WriteLine("You've Already Choosen this time!");
+                                                        else dumbledore.ChooseDay(Day, ch, Hour);
+                                                    } while (Day != "Q");
+                                                    CourseList.Add(ch);
+                                                    //ChemistryList.Add(ch);
+                                                    TeacherList[index].Courses.Add(ch);
+                                                    break;
+                                                case "c":
+                                                    Message.Program();
+                                                    Magic mg = new Magic();
+                                                    mg.CourseType = CourseType.Mg;
+                                                    //mg.Teacher = TeacherList[index];
+                                                    Console.Write("Enter Your Course Topic:");
+                                                    mg.Name = Console.ReadLine();
+                                                    Console.Write("Term:");
+                                                    mg.Term = int.Parse(Console.ReadLine());
+                                                    Console.Write("Capacity:");
+                                                    mg.Capacity = int.Parse(Console.ReadLine());
+                                                    do
+                                                    {
+                                                        Message.Program();
+                                                        Message.WeekDays();
+                                                        Day = Console.ReadLine();
+                                                        if (Day == "Q") break;
+                                                        Message.Program();
+                                                        Message.Hours();
+                                                        string Hour = Console.ReadLine();
+                                                        if (!TeacherList[index].SimultaneousTeaching)
+                                                        {
+                                                            if (!dumbledore.CourseInterruptTE(TeacherList[index], mg))
+                                                            {
+                                                                dumbledore.ChooseDay(Day, mg, Hour);
+                                                            }
+                                                            else Console.WriteLine("You Can't Teach Simultaneously");
+                                                        }
+                                                        else if (dumbledore.CourseDuplicateTime(mg, Day, Hour)) Console.WriteLine("You've Already Choosen this time!");
+                                                        else dumbledore.ChooseDay(Day, mg, Hour);
+                                                    } while (Day != "Q");
+                                                    CourseList.Add(mg);
+                                                    //MagicList.Add(mg);
+                                                    TeacherList[index].Courses.Add(mg);
+                                                    break;
+                                                case "d":
+                                                    Message.Program();
+                                                    Sport sp = new Sport();
+                                                    sp.CourseType = CourseType.Sp;
+                                                    //sp.Teacher = TeacherList[index];
+                                                    Console.Write("Enter Your Course Topic:");
+                                                    sp.Name = Console.ReadLine();
+                                                    Console.Write("Term:");
+                                                    sp.Term = int.Parse(Console.ReadLine());
+                                                    Console.Write("Capacity:");
+                                                    sp.Capacity = int.Parse(Console.ReadLine());
+                                                    do
+                                                    {
+                                                        Message.Program();
+                                                        Message.WeekDays();
+                                                        Day = Console.ReadLine();
+                                                        if (Day == "Q") break;
+                                                        Message.Program();
+                                                        Message.Hours();
+                                                        string Hour = Console.ReadLine();
+                                                        if (!TeacherList[index].SimultaneousTeaching)
+                                                        {
+                                                            if (!dumbledore.CourseInterruptTE(TeacherList[index], sp))
+                                                            {
+                                                                dumbledore.ChooseDay(Day, sp, Hour);
+                                                            }
+                                                            else Console.WriteLine("You Can't Teach Simultaneously");
+                                                        }
+                                                        else if (dumbledore.CourseDuplicateTime(sp, Day, Hour)) Console.WriteLine("You've Already Choosen this time!");
+                                                        else dumbledore.ChooseDay(Day, sp, Hour);
+                                                    } while (Day != "Q");
+                                                    CourseList.Add(sp);
+                                                    //SportList.Add(sp);
+                                                    TeacherList[index].Courses.Add(sp);
+                                                    break;
+                                                default:
+                                                    Message.Default(3);
+                                                    break;
+                                            }
+                                            break;
+                                        case "DE":
+                                            Console.WriteLine("Choose Lesson by index:");
+                                            if (TeacherList[index].Courses.Count > 0)
+                                            {
                                                 for (int i = 0; i < TeacherList[index].Courses.Count; i++)
                                                 {
                                                     Console.WriteLine($"{i + 1}- {TeacherList[index].Courses[i].Name}");
-                                                    int LessonIndex = int.Parse(Console.ReadLine());
-                                                    LessonIndex--;
-                                                    bool ShowStudents = true;
-                                                    while(ShowStudents)
+                                                }
+                                                int LessonIndex = int.Parse(Console.ReadLine());
+                                                LessonIndex--;
+                                                Console.WriteLine("Enter Exercise Description:");
+                                                string Exercise = Console.ReadLine();
+                                                for(int i =0;i<StudentList.Count;i++)
+                                                {
+                                                    int CourseSearch = dumbledore.CourseComparison(StudentList[i], TeacherList[index].Courses[LessonIndex]);
+                                                    if(CourseSearch>=0)
                                                     {
-                                                        Console.WriteLine("Choose Student by index:");
-                                                        for(int j=0;j< TeacherList[index].Courses[LessonIndex].Students.Count;j++)
-                                                        {
-                                                            Console.WriteLine($"{j+1}- {TeacherList[index].Courses[LessonIndex].Students[j]}");
-                                                        }
+                                                        StudentList[i].Courses[CourseSearch].Exercise = Exercise;
                                                     }
                                                 }
-                                                break;
-                                            case "b":
-                                                TeacherMenu2 = false;
-                                                break;
-                                            case "E":
-                                                System.Environment.Exit(0);
-                                                break;
-                                            default:
-                                                Message.Default(3);
-                                                break;
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("No Course Available!");
+                                                Wait.Dot("", 3);
+                                            }
+                                            break;
+                                        case "S":
+                                            Console.WriteLine("Choose Lesson by index:");
+                                            if (TeacherList[index].Courses.Count > 0)
+                                            {
+                                                for (int i = 0; i < TeacherList[index].Courses.Count; i++)
+                                                {
+                                                    Console.WriteLine($"{i + 1}- {TeacherList[index].Courses[i].Name}");
+                                                }
+                                                int LessonIndex = int.Parse(Console.ReadLine());
+                                                LessonIndex--;
+                                                bool ShowStudents = true;
+                                                while (ShowStudents)
+                                                {
+                                                    Console.WriteLine("Enter Student ID:");
+                                                    string StID = Console.ReadLine();
+                                                    if (StID == "b") break;
+                                                    int STindex = dumbledore.SearchSTByID(StID, StudentList);
+                                                    if (STindex < 0) Console.WriteLine("User Not Found!");
+                                                    else if (STindex >= 0)
+                                                    {
+                                                        int CourseSearch = dumbledore.CourseComparison(StudentList[STindex], TeacherList[index].Courses[LessonIndex]);
+                                                        if (CourseSearch >= 0)
+                                                        {
+                                                            Console.WriteLine($"Entering {StudentList[STindex].FirstName} {StudentList[STindex].LastName}'s {StudentList[STindex].Courses[CourseSearch].Name} SCORE:");
+                                                            int score = int.Parse(Console.ReadLine());
+                                                            StudentList[STindex].ScoreCollector(score, StudentList[STindex].Courses[CourseSearch]);
+                                                        }
+                                                        else Console.WriteLine("This Student isn't Available in this Course!");
+                                                    }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("No Course Available!");
+                                                Wait.Dot("", 3);
+                                            }
+                                            //Console.WriteLine("Choose Lesson by index:");
+                                            //    for (int i = 0; i < TeacherList[index].Courses.Count; i++)
+                                            //    {
+                                            //        Console.WriteLine($"{i + 1}- {TeacherList[index].Courses[i].Name}");
+                                            //    }
+                                            //    int LessonIndex = int.Parse(Console.ReadLine());
+                                            //    LessonIndex--;
+                                            //    bool ShowStudents = true;
+                                            //    while (ShowStudents)
+                                            //    {
+                                            //        Console.WriteLine("Choose Student by index:");
+                                            //    if (TeacherList[index].Courses[LessonIndex] == StudentList[i].Courses[j])
 
-                                        }
+                                            //    }
+                                            break;
+                                        case "b":
+                                            TeacherMenu2 = false;
+                                            break;
+                                        case "E":
+                                            System.Environment.Exit(0);
+                                            break;
+                                        default:
+                                            Message.Default(3);
+                                            break;
+
                                     }
                                 }
                             }
@@ -525,26 +625,17 @@ namespace Hogwarts
                     // *** Student Menu
                     case "S":
                         Message.Program();
-                        //bool StudentMenu = true;
-                        //while (StudentMenu)
-                        //{
-                            if (FirstLogin)
-                            {
-                                Message.FirstLogin();
-                                Thread.Sleep(2000);
-                                Message.Loading(1);
-                                break;
-                            }
-                            else
-                            {
-                                //Login check
-                                //Message.Program();
-                                //Console.WriteLine("Enter your Username and Password below");
-                                //Console.Write("User Name: ");
-                                //input = Console.ReadLine();
-                                //string username2 = input;
-                                //Console.Write("Password: ");
-                                //input = GetPassword();
+                        
+                        if (FirstLogin)
+                        {
+                            Message.FirstLogin();
+                            Thread.Sleep(2000);
+                            Message.Loading(1);
+                            break;
+                        }
+                        else
+                        {
+
                             string password2 = input;
                             string username2 = input;
                             int index = -2;
@@ -580,9 +671,8 @@ namespace Hogwarts
                                 }
                                 password2 = input;
                                 index = dumbledore.STLoginCheck(username2, password2, StudentList);
-                            } while (index<0);
-                                
-                                    
+                            } while (index < 0);
+
                             if (index >= 0)
                             {
                                 Message.Program();
@@ -592,7 +682,7 @@ namespace Hogwarts
                                 {
                                     Message.Program();
                                     Message.Welcome(StudentList[index].FirstName + " " + StudentList[index].LastName);
-             
+
                                     if (!StudentList[index].invited)
                                     {
                                         Console.WriteLine("You Are Not Allowed to Hogwarts!");
@@ -615,13 +705,16 @@ namespace Hogwarts
                                         Message.Registered(StudentList[index]);
                                         Console.WriteLine("Press any key to exit");
                                         Console.ReadKey();
-                                        Wait.Dot("Directing To Your Panel in 5secs",5);
+                                        Wait.Dot("Directing To Your Panel in 5 secs", 1);
+                                        Wait.Dot("Directing To Your Panel in 4 secs", 1);
+                                        Wait.Dot("Directing To Your Panel in 3 secs", 1);
+                                        Wait.Dot("Directing To Your Panel in 2 secs", 1);
+                                        Wait.Dot("Directing To Your Panel in 1 secs", 1);
                                     }
                                     if (StudentList[index].Registered)
                                     {
                                         Message.Program();
                                         Message.Welcome(StudentList[index].FirstName + " " + StudentList[index].LastName);
-                                        if () dumbledore.ShowDorm(StudentList[index]);
                                         if (StudentList[index].NewSTMessage)
                                         {
                                             Message.NewMessage();
@@ -630,6 +723,48 @@ namespace Hogwarts
                                         string input5 = Console.ReadLine();
                                         switch (input5)
                                         {
+                                            case "J":
+                                                StudentList[index].ShowExercise();
+                                                Console.WriteLine("Press any key to continue.");
+                                                Console.ReadKey();
+                                                Message.Program();
+                                                bool InJungle = true;
+                                                while (InJungle)
+                                                {
+                                                    Console.Clear();
+                                                    Message.Time();
+                                                    Message.Topic();
+                                                    StudentList[index].Jungle(BotanicalInstance);
+                                                    int PlantIndex;
+                                                    string input11 = Console.ReadLine();
+                                                    if (int.TryParse(input11, out PlantIndex))
+                                                    {
+                                                        PlantIndex--;
+                                                        switch (StudentList[index].Term)
+                                                        {
+                                                            case 1:
+                                                                BotanicalInstance.Term1[PlantIndex].Count--;
+                                                                break;
+                                                            case 2:
+                                                                BotanicalInstance.Term2[PlantIndex].Count--;
+                                                                break;
+                                                            case 3:
+                                                                BotanicalInstance.Term3[PlantIndex].Count--;
+                                                                break;
+                                                            case 4:
+                                                                BotanicalInstance.Term4[PlantIndex].Count--;
+                                                                break;
+                                                            default:
+                                                                break;
+                                                        }
+                                                    }
+                                                    else if (input11 == "b")
+                                                    {
+                                                        InJungle = false;
+                                                        break;
+                                                    }
+                                                }
+                                                break;
                                             case "S":
                                                 Message.Program();
                                                 StudentList[index].ScheduleTable(StudentList[index].Schedule(StudentList[index].Courses));
@@ -723,20 +858,11 @@ namespace Hogwarts
                                                 bool SelectUnit = true;
                                                 while (SelectUnit)
                                                 {
-                                                    Console.WriteLine("Select One by index:");
-                                                    Console.WriteLine($"{"",-2}- {"Course Name",-15} {"Capacity",-9} Time");
-                                                    for(int i =0; i<CourseList.Count;i++)
-                                                    {
-                                                            Console.Write($"{i + 1,-2}- {CourseList[i].Name,-15} {CourseList[i].Registered+"/"+CourseList[i].Capacity,-9} ");
-                                                            for(int j=0; j<CourseList[i].DayOfWeek.Count;j++)
-                                                            {
-                                                                Console.Write($"({CourseList[i].DayOfWeek[j] +" "+CourseList[i].Hour[j]})");
-                                                            }
-                                                            Console.WriteLine();
-                                                    }
+                                                    dumbledore.ShowCourses(CourseList, StudentList[index]);
                                                     string input10 = Console.ReadLine();
                                                     if (input10 == "b") break;
                                                     int CourseIndex = int.Parse(input10);
+                                                    CourseIndex--;
                                                     if (CourseList[CourseIndex].Term != StudentList[index].Term) Console.WriteLine("Your Term Doesn't Match!");
                                                     else if (dumbledore.CourseInterrupt(StudentList[index], CourseList[CourseIndex])) Console.WriteLine("Time Interrupts!");
                                                     else if (CourseList[CourseIndex].Registered >= CourseList[CourseIndex].Capacity) Console.WriteLine("Course Capacity is Full!");
@@ -744,9 +870,15 @@ namespace Hogwarts
                                                     {
                                                         CourseList[CourseIndex].Registered++;
                                                         StudentList[index].Courses.Add(CourseList[CourseIndex]);
-                                                        CourseList[CourseIndex].Students.Add(StudentList[index]);
+                                                        //CourseList[CourseIndex].Students.Add(StudentList[index]);
+                                                        Console.WriteLine("Course Added Successfully");
                                                     }
                                                 }
+                                                break;
+                                            case "F":
+                                                StudentList[index].ShowScore();
+                                                Console.WriteLine("Press any key to turn back.");
+                                                Console.ReadKey();
                                                 break;
                                             case "b":
                                                 StudentMenu2 = false;
@@ -761,7 +893,6 @@ namespace Hogwarts
                                     }
                                 }
                             }
-                            //}
                         }
                         break;
                     default:
@@ -780,6 +911,11 @@ namespace Hogwarts
                     }
                     Dorm.EmptyDorm();
                     FirstRunTime = DateTime.Now;
+                }
+                if ((DateTime.Now.Month - FirstRunTime2.Month) > 2)
+                {
+                    BotanicalInstance.DefaultPlant();
+                    FirstRunTime2 = DateTime.Now;
                 }
             }
         }
@@ -824,6 +960,6 @@ namespace Hogwarts
             T value = (T)values.GetValue(index);
             return value;
         }
-        
+
     }
 }

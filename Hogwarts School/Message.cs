@@ -142,21 +142,22 @@ namespace Hogwarts
         public static void StudentMenu()
         {
             Console.WriteLine("Choose one (type key letter):");
-            Console.WriteLine("Inbox(I)");
-            Console.WriteLine("Do Exercises(DE)");
-            Console.WriteLine("Weekly Schedule(S)");
-            Console.WriteLine("Select Units(U)");
-            Console.WriteLine("Send Message to Dumbledore(M)");
-            Console.WriteLine("Enter Train(T)");
-            Console.WriteLine("Exit(E)");
+            Console.WriteLine("Inbox(I)"); //
+            Console.WriteLine("Go to Jungle(J)");
+            Console.WriteLine("See Final Scores(F)"); //
+            Console.WriteLine("Weekly Schedule(S)"); //
+            Console.WriteLine("Select Units(U)"); //
+            Console.WriteLine("Send Message to Dumbledore(M)"); //
+            Console.WriteLine("Enter Train(T)"); //
+            Console.WriteLine("Exit(E)"); //
         }
         public static void TeacherMenu()
         {
             Console.WriteLine("Choose one (type key letter):");
-            Console.WriteLine("Present a Lesson(L)");
-            Console.WriteLine("Define a Task(T)");
-            Console.WriteLine("Enter Final Score(S)");
-            Console.WriteLine("Exit(E)");
+            Console.WriteLine("Present a Lesson(L)"); //
+            Console.WriteLine("Define a Exercise(DE)");
+            Console.WriteLine("Enter Final Score(S)"); //
+            Console.WriteLine("Exit(E)"); //
         }
         public static void Lessons()
         {

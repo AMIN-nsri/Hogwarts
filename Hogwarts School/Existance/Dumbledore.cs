@@ -266,17 +266,29 @@ namespace Hogwarts
             Console.ForegroundColor = ConsoleColor.White;
         }
 
-        public int CourseComparison(Student st,Teacher teacher)
+        public int CourseComparison(Student st, Course teachercourse)
         {
-            for(int i =0; i<st.Courses.Count;i++)
+            for (int i = 0; i < st.Courses.Count; i++)
             {
-                if (st.Courses[i].Teacher == teacher)
+                if (st.Courses[i] == teachercourse)
                 {
                     return i;
                 }
             }
             return -1;
         }
+
+        //public int StudentCourseIndexFinder(Student st, int CrIndex)
+        //{
+        //    for (int i = 0; i < st.Courses.Count; i++)
+        //    {
+        //        if (st.Courses[i] == teacherCr)
+        //        {
+        //            return i;
+        //        }
+        //    }
+        //    return -1;
+        //}
 
         public bool CourseInterrupt(Student st, Course cr)
         {
@@ -292,6 +304,146 @@ namespace Hogwarts
             }
             return false;
         }
+        public bool CourseInterruptTE(Teacher te, Course cr)
+        {
+            for (int i = 0; i < te.Courses.Count; i++)
+            {
+                for (int j = 0; j < te.Courses[i].DayOfWeek.Count; j++)
+                {
+                    for (int k = 0; k < cr.DayOfWeek.Count; k++)
+                    {
+                        if ((te.Courses[i].DayOfWeek[j] == cr.DayOfWeek[k]) && (te.Courses[i].Hour[j] == cr.Hour[k])) return true;
+                    }
+                }
+            }
+            return false;
+        }
+        public bool CourseDuplicateTime(Course cr,string Day, string Hour)
+        {
+
+            DayOfWeek day = DayOfWeek.Friday;
+            int hour = 0;
+            switch (Day)
+            {
+                case "a":
+                    day = DayOfWeek.Saturday;
+                    break;
+                case "b":
+                    day = DayOfWeek.Sunday;
+                    break;
+                case "c":
+                    day = DayOfWeek.Monday;
+                    break;
+                case "d":
+                    day = DayOfWeek.Tuesday;
+                    break;
+                case "e":
+                    day = DayOfWeek.Wednesday;
+                    break;
+                case "f":
+                    day = DayOfWeek.Thursday;
+                    break;
+                case "g":
+                    day = DayOfWeek.Friday;
+                    break;
+                default:
+                    break;
+            }
+            switch (Hour)
+            {
+                case "a":
+                    hour = 8;
+                    break;
+                case "b":
+                    hour = 10;
+                    break;
+                case "c":
+                    hour = 13;
+                    break;
+                case "d":
+                    hour = 14;
+                    break;
+                case "e":
+                    hour = 16;
+                    break;
+                default:
+                    break;
+            }
+            for (int i=0;i<cr.DayOfWeek.Count;i++)
+            {
+                if (cr.DayOfWeek[i] == day && cr.Hour[i] == hour) return true;
+            }
+            return false;
+        }
+        public int STCourseIndex(Course CourseList, Student st)
+        {
+            for (int j = 0; j < st.Courses.Count; j++)
+            {
+                if (CourseList == st.Courses[j]) return j;
+            }
+            return -1;
+        }
+
+        public void ShowCourses(List<Course> CourseList, Student st)
+        {
+            Console.WriteLine("Select One by index:");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{"",-2}  {"Course Name",-15} {"Capacity",-9} Time");
+            Console.ForegroundColor = ConsoleColor.White;
+            for (int i = 0; i < CourseList.Count; i++)
+            {
+                int STcourseindex = STCourseIndex(CourseList[i], st);
+                if (STcourseindex >= 0)
+                {
+                    int score = 0;
+                    switch (st.Courses[STcourseindex].CourseType)
+                    {
+                        case CourseType.Ch:
+                            score = st.Score.Ch;
+                            break;
+                        case CourseType.Mg:
+                            score = st.Score.Mg;
+                            break;
+                        case CourseType.Sp:
+                            score = st.Score.Sp;
+                            break;
+                        case CourseType.Bot1:
+                            score = st.Score.Bt1;
+                            break;
+                        case CourseType.Bot2:
+                            score = st.Score.Bt2;
+                            break;
+                        case CourseType.Bot3:
+                            score = st.Score.Bt3;
+                            break;
+                        case CourseType.Bot4:
+                            score = st.Score.Bt4;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (score < 10 && score>0)
+                    {
+                        Console.Write($"{i + 1,-2}- {CourseList[i].Name,-15} {CourseList[i].Registered + "/" + CourseList[i].Capacity,-9} ");
+                        for (int j = 0; j < CourseList[i].DayOfWeek.Count; j++)
+                        {
+                            Console.Write($"({CourseList[i].DayOfWeek[j] + " " + CourseList[i].Hour[j]})");
+                        }
+                        Console.WriteLine();
+                    }
+                }
+                else
+                {
+                    Console.Write($"{i + 1,-2}- {CourseList[i].Name,-15} {CourseList[i].Registered + "/" + CourseList[i].Capacity,-9} ");
+                    for (int j = 0; j < CourseList[i].DayOfWeek.Count; j++)
+                    {
+                        Console.Write($"({CourseList[i].DayOfWeek[j] + " " + CourseList[i].Hour[j]})");
+                    }
+                    Console.WriteLine();
+                }
+            }
+        }
+        
     }
 }
 

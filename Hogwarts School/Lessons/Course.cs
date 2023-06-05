@@ -1,4 +1,6 @@
 ﻿using System;
+using Hogwarts;
+
 namespace Hogwarts
 {
 	public class Course
@@ -16,15 +18,17 @@ namespace Hogwarts
             this.Registered = course.Registered;
             this.Term = course.Term;
         }
+        public CourseType CourseType { get; set; }
         public string Name { get; set; }
         public List<DayOfWeek> DayOfWeek { get; set; } = new List<DayOfWeek>();
         public List<int> Hour { get; set; } = new List<int>();
         public int Registered { get; set; } = 0;
         public int Capacity { get; set; }
         public int Term { get; set; }
-        public Teacher Teacher { get; set; } = new Teacher();
-        public List<Student> Students { get; set; } = new List<Student>();
-        public int Score { get; set; }
+        public string Exercise { get; set; }
+        //public Teacher Teacher { get; set; } = new Teacher();
+        //public List<Student> Students { get; set; } = new List<Student>();
+        //public int Score { get; set; }
 
     }
 }
